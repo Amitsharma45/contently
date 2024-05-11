@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import logo from "@/assets/image/contently-logo.png";
 import LargeNavbar from "./large-navbar";
-// import SmallNavbar from "./small-navbar";
+import SmallNavbar from "./small-navbar";
 import Link from "next/link";
 
 const items = [
@@ -30,7 +30,7 @@ function NavBar() {
           </div>
         </Link>
         <LargeNavbar items={items}  />
-        {/* <SmallNavbar items={items} item2={item2} /> */}
+        <SmallNavbar items={items}  />
       </div>
     </div>
   );

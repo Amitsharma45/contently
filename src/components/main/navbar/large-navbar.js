@@ -20,7 +20,7 @@ export default function LargeNavbar({ items }) {
     <>
       <div className="hidden lg:flex justify-center items-center">
         {items.map((item) => (
-          <Link href key={item.id} href={item.path} className="px-2">
+          <Link  key={item.id} href={item.path} className="px-2">
             <Button size="sm" variant="link" className="text-lg font-normal hover:text-red-500 transition-colors ease-in-out duration-300">
               {item.name}
             </Button>
