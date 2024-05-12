@@ -1,7 +1,17 @@
-import React from 'react'
-
-export default function index() {
+import React from "react";
+import AssignmentSteps from "./assignmentSteps";
+import Details from "./details";
+import FAQ from "./faq";
+import Testimonials from "./testimonials";
+import Banner from "./banner";
+export default function HomeScreen() {
   return (
-    <div>index</div>
-  )
+    <>
+      <Banner />
+      <AssignmentSteps />
+      <Details />
+      <FAQ />
+      <Testimonials />
+    </>
+  );
 }

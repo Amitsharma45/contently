@@ -1,7 +1,5 @@
-import React from 'react'
-
+import React from "react";
+import HomeScreen from "@/components/main/home";
 export default function HomePage() {
-  return (
-    <div>HomePage</div>
-  )
+  return <HomeScreen />;
 }

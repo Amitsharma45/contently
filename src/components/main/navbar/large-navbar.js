@@ -42,8 +42,9 @@ export default function LargeNavbar({ items }) {
         ) : (
           <>
             <Link href="/signup">
-              <Button className="text-sm">Sign Up</Button>
+              <button  className="menu-block">sign-in</button>
             </Link>
+            
           </>
         )}
       </div>
