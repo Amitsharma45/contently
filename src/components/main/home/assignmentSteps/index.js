@@ -77,16 +77,16 @@ const data = [
   {
     title: "Step 1",
     description:
-      "Fill out the details in the form aboveadjust the format of your assignment according to your needs Upload the 'file' containing the assignment in text form and references if there are any After completion of the above two steps proceed using 'Place order' button given below the form.",
+      "Fill out the details in the form aboveadjust the format of your assignment according to your needs Upload the file containing the assignment in text form and references if there are any After completion of the above two steps proceed using Place order button given below the form.",
   },
   {
     title: "Step 2",
     description:
-      "You will be redirected to the payment portal Once you fill out the information, you can proceed to make payment and confirm the order If you face any issues regarding payment/s, kindly refer to the 'Services' page.",
+      "You will be redirected to the payment portal Once you fill out the information, you can proceed to make payment and confirm the order If you face any issues regarding payment/s, kindly refer to the Services page.",
   },
   {
     title: "Step 3",
     description:
-      "Any orders you place will be placed in your profile and/or will be sent to your mail address If you have any issues regarding the assignment after its completion, kindly refer to the 'Services' If you have any questions regarding the website or the process of assignment completion, kindly refer to FAQ page.",
+      "Any orders you place will be placed in your profile and/or will be sent to your mail address If you have any issues regarding the assignment after its completion, kindly refer to the Services If you have any questions regarding the website or the process of assignment completion, kindly refer to FAQ page.",
   },
 ];

@@ -20,7 +20,7 @@ function About() {
           Contently Connect
         </p>
         <p className="text-[#FFFFFF] text-[25px] text-center pt-10 mb-8 mx-auto ">
-          Let's explore and deepen our connection.
+          Let&#39;s explore and deepen our connection.
         </p>
         <div className="h-[7px] w-[150px] bg-[#1A0C87] mx-auto"></div>
       </div>

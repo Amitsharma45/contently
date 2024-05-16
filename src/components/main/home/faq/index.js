@@ -74,7 +74,7 @@ const data = [
     id: 2,
     title: "How will you receive your completed assignments?",
     description:
-      "All orders are delivered through the customer's account on the website via the orders page.",
+      "All orders are delivered through the customer&#39;s account on the website via the orders page.",
   },
   {
     id: 3,

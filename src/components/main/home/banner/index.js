@@ -182,9 +182,9 @@ export default function Banner() {
                   strings: [
                     "Contently Writers Devised with Merit",
                     "Assignments done in few clicks",
-                    "We’re here to lighten your workload",
+                    "We&#39;re here to lighten your workload",
                     "When there is too much to write!",
-                    "Pushing it for Tomorrow? Don't worry, we got you",
+                    "Pushing it for Tomorrow? Don&#39;t worry, we got you",
                     "Get work done from the experts",
                     "Contently Writers Devised with Merit",
                   ],

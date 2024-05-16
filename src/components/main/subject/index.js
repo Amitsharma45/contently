@@ -188,7 +188,7 @@ const data = [
     tag: "#accounting",
     title: "Accounting",
     logo:  <FaCalculator />,
-    about: `Accounting, also known as accountancy, is the process of recording and processing information about economic entities, such as businesses and corporations. Accounting measures the results of an organization's economic activities and conveys this information to a variety of stakeholders, including investors, creditors, management, and regulators. Practitioners of accounting are known as accountants. The terms "accounting" and "financial reporting" are often used interchangeably.`,
+    about: 'Accounting, also known as accountancy, is the process of recording and processing information about economic entities, such as businesses and corporations. Accounting measures the results of an organization &#39;s economic activities and conveys this information to a variety of stakeholders, including investors, creditors, management, and regulators. Practitioners of accounting are known as accountants. The terms "accounting" and "financial reporting" are often used interchangeably.',
     service: "Services Offered",
     points: [
       "Accounting assignment help",
