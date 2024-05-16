@@ -61,7 +61,7 @@ export default function SmallNavbar({ items, item2 }) {
           ) : (
             <>
               <SheetClose asChild>
-                <Link href="/signup">
+                <Link href="/sign-up">
                   <Button className="mb-4">Sign In</Button>
                 </Link>
               </SheetClose>
