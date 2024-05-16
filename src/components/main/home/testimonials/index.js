@@ -22,6 +22,12 @@ import Image from "next/image";
 import img from "@/assets/image/Screenshot 2024-04-10 165307.png";
 import ReactStars from "react-stars";
 export default function Testimonials() {
+  function scrollToSection() {
+    setTimeout(() => {
+      const section = document.getElementById("#home"); // Replace 'sectionId' with the ID of the section you want to scroll to
+      section.scrollIntoView({ behavior: "smooth" });
+    }, 10);
+  }
   return (
     <>
       <div id="faq" className="px-4 sm:!px-10 lg:!px-[50px] bg-[#f8f9fa]">

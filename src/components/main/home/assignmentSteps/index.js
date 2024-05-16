@@ -38,7 +38,7 @@ export default function AssignmentSteps() {
         </div>
       </div>
       <div className="px-4 sm:!px-10 lg:!px-[50px] bg-black">
-        <div className="max-w-[1280px] mx-auto p-16 flex justify-center">
+        <div className="max-w-[1280px] mx-auto p-16 flex justify-center sm:flex-row flex-col">
           <div className="text-white text-center p-5">
             <h1 className="text-[#003cff] text-3xl leading-10 font-semibold">
               Zero Plagiarism

@@ -67,8 +67,12 @@ export default function Banner() {
   }
 
   function updatePrice() {
-    var subject = subjectOptions.find((item) => item.name === formValues.subject).value;
-    var deadline = deadlineOptions.find((item) => item.name === formValues.deadline).value;
+    var subject = subjectOptions.find(
+      (item) => item.name === formValues.subject
+    ).value;
+    var deadline = deadlineOptions.find(
+      (item) => item.name === formValues.deadline
+    ).value;
     var price = 0;
 
     if (deadline === "136502") {
@@ -112,7 +116,6 @@ export default function Banner() {
       } else if (subject === "123" || subject === "132") {
         price = 18;
       }
-    
     } else if (deadline === "136500") {
       // 3 days
       if (
@@ -134,7 +137,6 @@ export default function Banner() {
       } else if (subject === "123" || subject === "132") {
         price = 22;
       }
-      
     } else if (deadline === "136499") {
       // 1 day
       if (
@@ -161,20 +163,19 @@ export default function Banner() {
     price *= count;
     setPrice(price);
   }
-  useEffect(()=>{
+  useEffect(() => {
     updatePrice();
-  },[formValues,count])
+  }, [formValues, count]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
-
-  }
+  };
   return (
     <div className="px-4 sm:!px-10 lg:!px-[50px] ">
       <div className="max-w-[1280px] mx-auto  flex lg:flex-row flex-col gap-10">
         <div className="w-full grid  mt-20 pr-10">
-          <p className="md:text-7xl sm:text-5xl text-5xl  min-h-[250px] leading-[80px]">
+          <p className="md:text-7xl sm:text-5xl text-5xl min-h-[300px]  sm:min-h-[200px] leading-[80px]">
             {isClient && (
               <Typewriter
                 skipAddStyles={true}
@@ -182,9 +183,9 @@ export default function Banner() {
                   strings: [
                     "Contently Writers Devised with Merit",
                     "Assignments done in few clicks",
-                    "We&#39;re here to lighten your workload",
+                    "We're here to lighten your workload",
                     "When there is too much to write!",
-                    "Pushing it for Tomorrow? Don&#39;t worry, we got you",
+                    "Pushing it for Tomorrow? Don't worry, we got you",
                     "Get work done from the experts",
                     "Contently Writers Devised with Merit",
                   ],
@@ -196,14 +197,13 @@ export default function Banner() {
               />
             )}
           </p>
-          <div className="flex sm:gap-40  gap-16 ">
+          <div className="flex  justify-between ">
             <Button type="button" variant="icon" onClick={scrollToSection}>
               <TbMailStar className="text-5xl" />
             </Button>
             <Link href="https://www.instagram.com/contentlywriters/">
               <FaInstagram className="text-5xl" />
             </Link>
-
             <Link href="https://www.linkedin.com/company/facio-contently-writers/">
               <FaLinkedin className="text-5xl" />
             </Link>
@@ -353,4 +353,4 @@ const deadlineOptions = [
   { name: "3 days", value: "136500" },
   { name: "7 days", value: "136501" },
   { name: "14 days", value: "136502" },
-]
+];

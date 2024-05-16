@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import img from "@/assets/image/Essential-Minimal-Payment-Icons-removebg-preview.png";
+import img from "@/assets/image/Essential-Minimal-Payment-Icons-removebg-preview copy.png";
 import { Separator } from "@/components/ui/separator";
 import { FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
