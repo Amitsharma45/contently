@@ -238,7 +238,7 @@ export default function Banner() {
               value={"Paragraph"}
               handleChange={handleChange}
             />
-            <SelectTab
+            {/* <SelectTab
               title="Highlight"
               name="highlight"
               data={[
@@ -247,7 +247,7 @@ export default function Banner() {
               ]}
               value={formValues.highlight}
               handleChange={handleChange}
-            />
+            /> */}
             <Input type="file" placeholder="Choose" className="w-full" />
             <Textarea
               value={formValues.comment}
@@ -290,7 +290,7 @@ export default function Banner() {
                 </Button>
               </div>
             </div>
-            <div className="text-center text-3xl">Total Price: {price}$</div>
+            <div className="text-center text-3xl">Estimated Price: {price}$</div>
             <Button
               type="button"
               className="w-full h-12  bg-[#000] hover:bg-white hover:text-black"

@@ -3,7 +3,16 @@ import Image from "next/image";
 import logo from "@/assets/image/Consulting-rafiki.svg";
 import { Button } from "@/components/ui/button";
 
+
+
 export default function AssignmentSteps() {
+
+  function scrollToSection() {
+    setTimeout(() => {
+      const section = document.getElementById("faq"); // Replace 'sectionId' with the ID of the section you want to scroll to
+      section.scrollIntoView({ behavior: "smooth" });
+    }, 10);
+  }
   return (
     <>
       <div className="px-4 sm:!px-10 lg:!px-[50px] ">
@@ -77,7 +86,7 @@ const data = [
   {
     title: "Step 1",
     description:
-      "Fill out the details in the form aboveadjust the format of your assignment according to your needs Upload the file containing the assignment in text form and references if there are any After completion of the above two steps proceed using Place order button given below the form.",
+      "Fill out the details in the form above adjust the format of your assignment according to your needs Upload the 'file' containing the assignment in text form and references if there are any After completion of the above two steps proceed using 'Place order' button given below the form.",
   },
   {
     title: "Step 2",

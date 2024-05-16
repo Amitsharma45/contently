@@ -45,7 +45,7 @@ export default function SmallNavbar({ items, item2 }) {
             </SheetClose>
           ))}
 
-          {true ? (
+          {false ? (
             <>
               <SheetClose asChild>
                 <Button
