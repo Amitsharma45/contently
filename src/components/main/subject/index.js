@@ -3,6 +3,13 @@ import { list } from "postcss";
 import React from "react";
 import Link from "next/link";
 import { FaCheck } from "react-icons/fa6";
+import { FaCalculator } from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
+import { MdEngineering } from "react-icons/md";
+import { FaLaptopCode } from "react-icons/fa";
+import { VscLaw } from "react-icons/vsc";
+import { FaChartBar } from "react-icons/fa";
+import { FaBook } from "react-icons/fa6";
 
 function Subject() {
 
@@ -49,7 +56,7 @@ function Subject() {
           <div className="grid gap-10 my-10 md:px-24 sm:px-16 px-2">
             {data.map((item, index) => (
               <div key={index} className="grid gap-6" id={item.tag}>
-                <h1 className="text-4xl font-semibold">{item.title}</h1>
+                <h1 className="text-4xl font-semibold flex gap-1">{item.logo} {item.title}</h1>
                 <p className="text-[#555]">{item.about}</p>
                 {item.points.length != 0 && (
                   <h1 className="text-3=2xl font-semibold">Services Offered</h1>
@@ -153,7 +160,7 @@ const data = [
   {
     title: "Management",
     tag: "#management",
-    logo: "logo",
+    logo: <FaChartLine />,
     about:
       "Management (or managing) is the administration of organizations, whether they are a business, a nonprofit organization, or a government body through business administration, nonprofit management, or the political science sub-field of public administration respectively. It is the process of managing the resources of businesses, governments, and other organizations.",
 
@@ -180,7 +187,7 @@ const data = [
   {
     tag: "#accounting",
     title: "Accounting",
-    logo: "logo",
+    logo:  <FaCalculator />,
     about: `Accounting, also known as accountancy, is the process of recording and processing information about economic entities, such as businesses and corporations. Accounting measures the results of an organization's economic activities and conveys this information to a variety of stakeholders, including investors, creditors, management, and regulators. Practitioners of accounting are known as accountants. The terms "accounting" and "financial reporting" are often used interchangeably.`,
     service: "Services Offered",
     points: [
@@ -205,7 +212,7 @@ const data = [
   {
     tag: "#engineering",
     title: "Engineering Studies",
-    logo: "logo",
+    logo: <MdEngineering />,
     about:
       "Engineering studies is an interdisciplinary branch of social sciences and humanities devoted to the study of engineers and their activities, often considered a part of science and technology studies (STS), and intersecting with and drawing from engineering education research. Studying engineers refers among other to the history and the sociology of their profession, its institutionalization and organization, the social composition and structure of the population of engineers, their training, their trajectory, etc. A subfield is for instance Women in engineering. Studying engineering refers to the study of engineering activities and practices, their knowledge and ontologies, their role into the society, their engagement.",
     service: "Services Offered",
@@ -231,7 +238,7 @@ const data = [
   {
     tag: "#it",
     title: "Information Technology",
-    logo: "logo",
+    logo: <FaLaptopCode />,
     about:
       "Information technology (IT) is a set of related fields that encompass computer systems, software, programming languages and data and information processing and storage. IT forms part of information and communications technology (ICT). An information technology system (IT system) is generally an information system, a communications system, or, more specifically speaking, a computer system — including all hardware, software, and peripheral equipment — operated by a limited group of IT users, and an IT project usually refers to the commissioning and implementation of an IT system.",
     service: "Services Offered",
@@ -257,7 +264,7 @@ const data = [
   {
     tag: "#law",
     title: "Law",
-    logo: "logo",
+    logo: <VscLaw />,
     about:
       "Legal education is the education of individuals in the principles, practices, and theory of law. It may be undertaken for several reasons, including to provide the knowledge and skills necessary for admission to legal practice in a particular jurisdiction, to provide a greater breadth of knowledge to those working in other professions such as politics or business, to provide current lawyers with advanced training or greater specialization, or to update lawyers on recent developments in the law.",
     service: "Services Offered",
@@ -283,7 +290,7 @@ const data = [
   {
     tag: "#statistics",
     title: "Statistics",
-    logo: "logo",
+    logo: <FaChartBar />,
     about: `Statistics (from German: Statistik, orig. "description of a state, a country") is the discipline that concerns the collection, organization, analysis, interpretation, and presentation of data. In applying statistics to a scientific, industrial, or social problem, it is conventional to begin with a statistical population or a statistical model to be studied. Populations can be diverse groups of people or objects such as "all people living in a country" or "every atom composing a crystal". Statistics deals with every aspect of data, including the planning of data collection in terms of the design of surveys and experiments.`,
     service: "Services Offered",
     points: [
@@ -308,7 +315,7 @@ const data = [
   {
     tag: "#general",
     title: "General Subjects",
-    logo: "logo",
+    logo: <FaBook />,
     about:
       "We offer services for a variety of academic stages from the basic topics in schools to dissertations of exceptional merit. Here are some non-branch specific subjects that might be of some help:",
     aboutPoints: [
