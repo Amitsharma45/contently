@@ -1,4 +1,8 @@
 import React from "react";
+import blogImage from '@/assets/image/Blog post-amico.svg'
+import IssueImage from '@/assets/image/Maintenance-bro.svg'
+import AccountImage from '@/assets/image/Safe-bro.svg'
+import PaymentImage from '@/assets/image/Refund-bro.svg'
 
 function About() {
     const data = [
