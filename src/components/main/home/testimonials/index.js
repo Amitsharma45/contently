@@ -24,8 +24,7 @@ import ReactStars from "react-stars";
 export default function Testimonials() {
   function scrollToSection() {
     setTimeout(() => {
-      const section = document.getElementById("#home"); // Replace 'sectionId' with the ID of the section you want to scroll to
-      section.scrollIntoView({ behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }, 10);
   }
   return (
@@ -93,14 +92,14 @@ export default function Testimonials() {
           <p className="text-white text-3xl text-center">
             Get your assignment done in just a few clicks
           </p>
-          <Link href="/">
-            <Button
-              type="button"
-              className="p-8 bg-[#000] text-xl hover:bg-white hover:text-black"
-            >
-              Write my assignment
-            </Button>
-          </Link>
+
+          <Button
+            onClick={scrollToSection}
+            type="button"
+            className="p-8 bg-[#000] text-xl hover:bg-white hover:text-black"
+          >
+            Write my assignment
+          </Button>
         </div>
       </div>
     </>
