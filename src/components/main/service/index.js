@@ -16,32 +16,44 @@ import { FaFilePrescription } from "react-icons/fa6";
 import { FaPenAlt } from "react-icons/fa";
 import { FaListCheck } from "react-icons/fa6";
 import { FaRegNoteSticky } from "react-icons/fa6";
+import Link from "next/link";
+import { MdEmail } from "react-icons/md";
+
 function Service() {
   return (
-    <div className="px-4 sm:!px-10 lg:!px-[50px] bg-[#FFFFFF]  !w-full ">
-      <div className="max-w-[1280px] mx-auto py-2">
-        <p className="text-2xl sm:text-5xl lg:text-6xl pt-10 font-semibold text-center">
-          Services
-        </p>
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 sm:gap-10 lg:gap-16 my-8">
-          {data.map((item, index) => (
-            <div key={index}>
-              <Card className="p-5 min-h-[380px] hover:translate-y-3 duration-200 ">
-                <CardHeader className="text-5xl text-[#00052a] hover:text-yellow-300  !justify-center">
-                  <div className="flex justify-center " >{item.logo}</div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-center text-3xl pb-2 text-[#00052a] font-medium">
-                    {item.title}
-                  </p>
-                  <p className="text-md opacity-80 font-normal">{item.about}</p>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
+    <>
+      <div className="px-4 sm:!px-10 lg:!px-[50px] bg-[#FFFFFF]  !w-full ">
+        <div className="max-w-[1280px] mx-auto py-2">
+          <p className="text-2xl sm:text-5xl lg:text-6xl pt-10 font-semibold text-center">
+            Services
+          </p>
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-5 sm:gap-10 lg:gap-16 my-8">
+            {data.map((item, index) => (
+              <div key={index}>
+                <Card className="p-5 min-h-[380px] hover:translate-y-3 duration-200 ">
+                  <CardHeader className="text-5xl text-[#00052a] hover:text-yellow-300  !justify-center">
+                    <div className="flex justify-center ">{item.logo}</div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-center text-3xl pb-2 text-[#00052a] font-medium">
+                      {item.title}
+                    </p>
+                    <p className="text-md opacity-80 font-normal">
+                      {item.about}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <Link href="mailto:info@contentlywriters.com">
+        <div className="rounded-full fixed w-12 h-12 transition-colors duration-200 text-white hover:text-[#5646ea] bg-[#5646ea] hover:bg-white bottom-6 right-16  flex justify-center items-center shadow-xl">
+          <MdEmail className="text-3xl " />
+        </div>
+      </Link>
+    </>
   );
 }
 

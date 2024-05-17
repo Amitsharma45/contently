@@ -209,7 +209,7 @@ export default function Banner() {
             </Link>
           </div>
         </div>
-        <div className="lg:w-[550px] bg-[#3c46d5] lg:p-4 p-10 lg:mx-1 sm:mx-20 mx-4 mt-10">
+        <div className="z-30   lg:w-[550px] bg-[#3c46d5] lg:p-4 p-10 lg:mx-1 sm:mx-20 mx-4 mt-10  ">
           <form className="w-full bg-white p-6 grid gap-3 ">
             <h1 className="text-2xl font-semibold">Place new order</h1>
             <SelectTab

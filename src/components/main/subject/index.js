@@ -10,6 +10,7 @@ import { FaLaptopCode } from "react-icons/fa";
 import { VscLaw } from "react-icons/vsc";
 import { FaChartBar } from "react-icons/fa";
 import { FaBook } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 
 function Subject() {
 
@@ -150,6 +151,11 @@ function Subject() {
           </div>
         </div>
       </div>
+      <Link href="mailto:info@contentlywriters.com">
+        <div className="rounded-full fixed w-12 h-12 transition-colors duration-200 text-white hover:text-[#5646ea] bg-[#5646ea] hover:bg-white bottom-6 right-16  flex justify-center items-center shadow-xl">
+          <MdEmail className="text-3xl " />
+        </div>
+      </Link>
     </>
   );
 }
