@@ -22,7 +22,7 @@ export default function SignUpScreen() {
   });
 
   const handleChange = (e) => {
-    console.log(e.target);
+
     const { name, value } = e.target;
     if (!value) {
       setErrors({
@@ -50,9 +50,9 @@ export default function SignUpScreen() {
         setErrors(error);
         return;
       }
-
+      console.log({ formValues });
       const response = await axios.post(
-        "http://localhost:8088/user/add",
+        "http://contentlywriters.com:8088/user/add",
         formValues
       );
 
