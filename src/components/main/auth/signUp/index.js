@@ -22,7 +22,6 @@ export default function SignUpScreen() {
   });
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
     if (!value) {
       setErrors({
@@ -50,13 +49,23 @@ export default function SignUpScreen() {
         setErrors(error);
         return;
       }
-      console.log({ formValues });
+
+      console.log("Form Values:", formValues);
+
       const response = await axios.post(
         "https://contentlywriters.com:8088/user/add",
-        formValues
+        formValues,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json, text/plain, */*",
+          },
+        }
       );
 
-      console.log(response);
+      localStorage.setItem("token", response.data.token);
+      
+      console.log("Response:", response.data);
     } catch (err) {
       console.log(err);
     }
@@ -112,7 +121,7 @@ export default function SignUpScreen() {
             <Input
               id="password"
               name="password"
-              type="text"
+              type="password"
               placeholder="Enter your Password"
               value={formValues.password}
               onChange={handleChange}

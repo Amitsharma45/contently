@@ -7,8 +7,11 @@ import InputError from "@/components/ui/input-error";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function LoginScreen() {
+
+  const router = useRouter();
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -20,7 +23,6 @@ export default function LoginScreen() {
   });
 
   const handleChange = (e) => {
-    console.log(e.target);
     const { name, value } = e.target;
     if (!value) {
       setErrors({
@@ -47,9 +49,14 @@ export default function LoginScreen() {
         return;
       }
 
-      const response = await axios.post("https://contentlywriters.com:8088/user/login",formValues);
+      console.log("Form Values:", formValues);
+      const response = await axios.get("https://contentlywriters.com:8088/user/login",formValues);
       
-      console.log(response);
+      console.log({response: response.data.token});
+      localStorage.setItem("token", response.data.token);
+      
+      router.replace("/dashboard");
+
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +86,7 @@ export default function LoginScreen() {
             <Input
               id="password"
               name="password"
-              type="text"
+              type="password"
               placeholder="Enter your Password"
               value={formValues.password}
               onChange={handleChange}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { list } from "postcss";
 import React from "react";
 import Link from "next/link";
@@ -13,9 +13,7 @@ import { FaBook } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 
-
 function Subject() {
-
   function scrollToSection(id) {
     console.log({ id });
     setTimeout(() => {
@@ -59,7 +57,9 @@ function Subject() {
           <div className="grid gap-10 my-10 md:px-24 sm:px-16 px-2">
             {data.map((item, index) => (
               <div key={index} className="grid gap-6" id={item.tag}>
-                <h1 className="text-4xl font-semibold flex gap-1">{item.logo} {item.title}</h1>
+                <h1 className="text-4xl font-semibold flex gap-1">
+                  {item.logo} {item.title}
+                </h1>
                 <p className="text-[#555]">{item.about}</p>
                 {item.points.length != 0 && (
                   <h1 className="text-3=2xl font-semibold">Services Offered</h1>
@@ -130,15 +130,15 @@ function Subject() {
               </div>
             </div>
             <div className="grid gap-4 mt-2">
-              <div className="flex items-center ">
-              <GoDotFill className="text-2xl bg-red-200 !px-0"/>
-              <GoDotFill className="text-2xl !px-0 "/>
-              <GoDotFill className="text-2xl !px-0"/>
+              <div className="flex items-center">
+                <div className="rounded-full bg-black h-3 w-3 m-[1px] " ></div>
+                <div className="rounded-full bg-black h-3 w-3 m-[1px] " ></div>
+                <div className="rounded-full bg-black h-3 w-3 m-[1px] " ></div>
                 <h1 className="text-4xl font-semibold">
-                Other Subjects and Services
-              </h1>
+                  Other Subjects and Services
+                </h1>
               </div>
-              
+
               <div className="text-[#555] gap-6 grid">
                 <p>
                   If you are looking for a subject not mentioned on our page or
@@ -201,8 +201,9 @@ const data = [
   {
     tag: "#accounting",
     title: "Accounting",
-    logo:  <FaCalculator />,
-    about: 'Accounting, also known as accountancy, is the process of recording and processing information about economic entities, such as businesses and corporations. Accounting measures the results of an organization &#39;s economic activities and conveys this information to a variety of stakeholders, including investors, creditors, management, and regulators. Practitioners of accounting are known as accountants. The terms "accounting" and "financial reporting" are often used interchangeably.',
+    logo: <FaCalculator />,
+    about:
+      'Accounting, also known as accountancy, is the process of recording and processing information about economic entities, such as businesses and corporations. Accounting measures the results of an organization &#39;s economic activities and conveys this information to a variety of stakeholders, including investors, creditors, management, and regulators. Practitioners of accounting are known as accountants. The terms "accounting" and "financial reporting" are often used interchangeably.',
     service: "Services Offered",
     points: [
       "Accounting assignment help",
