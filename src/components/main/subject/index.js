@@ -11,6 +11,8 @@ import { VscLaw } from "react-icons/vsc";
 import { FaChartBar } from "react-icons/fa";
 import { FaBook } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import { GoDotFill } from "react-icons/go";
+
 
 function Subject() {
 
@@ -127,11 +129,17 @@ function Subject() {
                 </p>
               </div>
             </div>
-            <div className="grid gap-4">
-              <h1 className="text-5xl font-semibold">
+            <div className="grid gap-4 mt-2">
+              <div className="flex items-center ">
+              <GoDotFill className="text-2xl bg-red-200 !px-0"/>
+              <GoDotFill className="text-2xl !px-0 "/>
+              <GoDotFill className="text-2xl !px-0"/>
+                <h1 className="text-4xl font-semibold">
                 Other Subjects and Services
               </h1>
-              <div className="text-[#555] gap-5 grid">
+              </div>
+              
+              <div className="text-[#555] gap-6 grid">
                 <p>
                   If you are looking for a subject not mentioned on our page or
                   you have an assignment that does not fall under mainstream or
