@@ -52,7 +52,7 @@ export default function SignUpScreen() {
       }
       console.log({ formValues });
       const response = await axios.post(
-        "http://contentlywriters.com:8088/user/add",
+        "https://contentlywriters.com:8088/user/add",
         formValues
       );
 

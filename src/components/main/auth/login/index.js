@@ -47,7 +47,7 @@ export default function LoginScreen() {
         return;
       }
 
-      const response = await axios.post("http://localhost:8088/user/login",formValues);
+      const response = await axios.post("https://contentlywriters.com:8088/user/login",formValues);
       
       console.log(response);
     } catch (err) {
