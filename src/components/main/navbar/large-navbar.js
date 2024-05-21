@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useUserContext } from '@/context/auth';
 
 export default function LargeNavbar({ items }) {
-  const isAuthenticated = false;
+  // const isAuthenticated = false;
+  const { isLoading, isAuthenticated ,setIsAuthenticated} = useUserContext();
+
   const handleLogout = () => {
-    // Dispatch logout action
     try {
-      dispatch(logout({ csrfToken }));
-      console.log("Logout");
-      router.replace("/logout-success");
+      localStorage.removeItem("token");
+      setIsAuthenticated(false);
     } catch (error) {
       alert("Try again later");
     }
@@ -31,20 +32,13 @@ export default function LargeNavbar({ items }) {
       <div className=" gap-4 hidden lg:flex ">
         {isAuthenticated ? (
           <>
-            <Button
-              size=""
-              className="text-sm bg-[#FFFFFF] text-[#212630] hover:bg-transparent"
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
+            <button onClick={handleLogout}  className="menu-block">Logout</button>
           </>
         ) : (
           <>
             <Link href="/sign-up">
-              <button  className="menu-block">sign-in</button>
+              <button  className="menu-block">Sign-in</button>
             </Link>
-            
           </>
         )}
       </div>

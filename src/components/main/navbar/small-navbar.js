@@ -13,7 +13,20 @@ import {
 
 import { BiMenu } from "react-icons/bi";
 import Link from "next/link";
+import { useUserContext } from '@/context/auth';
+
 export default function SmallNavbar({ items, item2 }) {
+
+  const { isLoading, isAuthenticated ,setIsAuthenticated} = useUserContext();
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem("token");
+      setIsAuthenticated(false);
+    } catch (error) {
+      alert("Try again later");
+    }
+  };
+
   return (
     <>
       <Sheet>
@@ -45,14 +58,14 @@ export default function SmallNavbar({ items, item2 }) {
             </SheetClose>
           ))}
 
-          {false ? (
+          {isAuthenticated ? (
             <>
               <SheetClose asChild>
                 <Button
                   size="sm"
                   variant="link"
                   className="text-md font-normal hover:text-red-500 transition-colors ease-in-out duration-300 text-left"
-                  onClick={() => {}}
+                  onClick={handleLogout}
                 >
                   Logout
                 </Button>

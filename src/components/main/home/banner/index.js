@@ -19,6 +19,8 @@ import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { TbMailStar } from "react-icons/tb";
+import axios from "axios";
+import InputError from "@/components/ui/input-error";
 
 export default function Banner() {
   const [isClient, setIsClient] = useState(false);
@@ -59,6 +61,7 @@ export default function Banner() {
     }
     setFormValues({ ...formValues, [name]: value.trim() });
   };
+
   function scrollToSection() {
     setTimeout(() => {
       const section = document.getElementById("faq"); // Replace 'sectionId' with the ID of the section you want to scroll to
@@ -167,8 +170,19 @@ export default function Banner() {
     updatePrice();
   }, [formValues, count]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const error = {};
+    if (!formValues.topic) error.topic = "Please enter topic";
+    if (!formValues.paragraph) error.paragraph = "Please enter paragraph";
+    if (!formValues.comment) error.comment = "Please enter comment";
+    if (!formValues.words) error.words = "Please enter words";
+    if (!formValues.deadline) error.deadline = "Please enter deadline";
+    if (!formValues.subject) error.subject = "Please enter subject";
+    setError(error);
+    if (Object.keys(error).length > 0) return;
+
+    const response = await axios.post("");
     console.log(formValues);
   };
   return (
@@ -219,6 +233,7 @@ export default function Banner() {
               value={formValues.subject}
               handleChange={handleChange}
             />
+            <InputError message={error.subject} />
             <Input
               className="w-full"
               name="topic"
@@ -226,6 +241,7 @@ export default function Banner() {
               onChange={handleChange}
               placeholder="Topic"
             />
+            <InputError message={error.topic} />
 
             <SelectTab
               title="Subject"
@@ -238,6 +254,7 @@ export default function Banner() {
               value={"Paragraph"}
               handleChange={handleChange}
             />
+            <InputError message={error.paragraph} />
             {/* <SelectTab
               title="Highlight"
               name="highlight"
@@ -249,12 +266,14 @@ export default function Banner() {
               handleChange={handleChange}
             /> */}
             <Input type="file" placeholder="Choose" className="w-full" />
+            
             <Textarea
               value={formValues.comment}
               onChange={handleChange}
               placeholder="Enter your comment here..."
               id="message"
             />
+            <InputError message={error.comment} />
             <div className="grid gap-1.5">
               <Label className="font-normal ">Deadline</Label>
               <SelectTab
@@ -264,6 +283,7 @@ export default function Banner() {
                 value={formValues.deadline}
                 handleChange={handleChange}
               />
+              <InputError message={error.deadline} />
             </div>
             <div>
               <div className="text-md">{250 * count} words</div>
@@ -290,7 +310,9 @@ export default function Banner() {
                 </Button>
               </div>
             </div>
-            <div className="text-center text-3xl">Estimated Price: {price}$</div>
+            <div className="text-center text-3xl">
+              Estimated Price: {price}$
+            </div>
             <Button
               type="button"
               className="w-full h-12  bg-[#000] hover:bg-white hover:text-black"

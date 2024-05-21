@@ -8,9 +8,9 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import { useUserContext } from "@/context/auth";
 export default function LoginScreen() {
-
+  const { getProfile } = useUserContext();
   const router = useRouter();
   const [formValues, setFormValues] = useState({
     email: "",
@@ -50,15 +50,28 @@ export default function LoginScreen() {
       }
 
       console.log("Form Values:", formValues);
-      const response = await axios.get("https://contentlywriters.com:8088/user/login",formValues);
-      
-      console.log({response: response.data.token});
-      localStorage.setItem("token", response.data.token);
-      
-      router.replace("/dashboard");
+      const response = await axios.post(
+        "https://contentlywriters.com:8088/user/login",
+        formValues
+      );
 
+      console.log({ response: response.data });
+      localStorage.setItem("token", response.data.token);
+
+      if (response.data.token == null) {
+        const error = {};
+        error.password = "Please check your password";
+        setErrors(error);
+        return;
+      }
+
+      getProfile();
+      router.replace("/");
     } catch (err) {
       console.log(err);
+      const error = {};
+      error.email = "User does not exists";
+      setErrors(error);
     }
   };
 

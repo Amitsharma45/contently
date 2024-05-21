@@ -14,19 +14,20 @@ export const AuthProvider = ({ children }) => {
 
   const getProfile = async () => {
     try {
+      setIsLoading(true);
       console.log("AuthContext getProfile");
       const response = await axios.get(
         "https://contentlywriters.com:8088/user/getProfile",
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `${localStorage.getItem("token")}`,
           },
         }
       );
       console.log(response.data);
+      setIsAuthenticated(true);
 
       setUser(response.data);
-      setIsAuthenticated(true);
       setIsLoading(false);
     } catch (err) {
       console.log(err);
@@ -57,6 +58,8 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         message,
         user,
+        setIsAuthenticated,
+        getProfile
       }}
     >
       {children}
