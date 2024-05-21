@@ -31,7 +31,8 @@ export default function Banner() {
     paragraph: "",
     comment: "",
     deadline: "1 day",
-    words: "",
+    orderFile: "",
+    temp: "Paragraph",
   });
 
   const [count, setCount] = useState(1);
@@ -41,12 +42,15 @@ export default function Banner() {
   }, []);
 
   const [error, setError] = useState({
-    email: "",
-    password: "",
+    subject: "",
+    topic: "",
+    paragraph: "",
+    comment: "",
+    deadline: "",
+    orderFile: "",
   });
 
   const handleChange = (e) => {
-    console.log(e.target);
     const { name, value } = e.target;
     if (!value) {
       setError({
@@ -59,7 +63,7 @@ export default function Banner() {
     } else {
       setError({ ...error, [name]: "" });
     }
-    setFormValues({ ...formValues, [name]: value.trim() });
+    setFormValues({ ...formValues, [name]: value });
   };
 
   function scrollToSection() {
@@ -166,24 +170,68 @@ export default function Banner() {
     price *= count;
     setPrice(price);
   }
+
   useEffect(() => {
     updatePrice();
   }, [formValues, count]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const error = {};
-    if (!formValues.topic) error.topic = "Please enter topic";
-    if (!formValues.paragraph) error.paragraph = "Please enter paragraph";
-    if (!formValues.comment) error.comment = "Please enter comment";
-    if (!formValues.words) error.words = "Please enter words";
-    if (!formValues.deadline) error.deadline = "Please enter deadline";
-    if (!formValues.subject) error.subject = "Please enter subject";
-    setError(error);
-    if (Object.keys(error).length > 0) return;
+    try {
+      e.preventDefault();
+      const error = {};
+      if (!formValues.topic) error.topic = "Please enter topic";
+      if (!formValues.orderFile) error.orderFile = "Select  enter File";
+      if (!formValues.comment) error.comment = "Please enter comment";
+      if (!formValues.deadline) error.deadline = "Please enter deadline";
+      if (!formValues.subject) error.subject = "Please enter subject";
+      setError(error);
+      console.log(error);
+      if (Object.keys(error).length > 0) return;
 
-    const response = await axios.post("");
-    console.log(formValues);
+      const data = {
+        count,
+        ...formValues,
+        amount: price,
+      };
+      if (localStorage.getItem("token") === null) {
+        alert("Please login to continue");
+        return;
+      }
+      let formData = new FormData();
+      formData.append("subject", formValues.subject);
+      formData.append("topic", formValues.topic);
+      // formData.append("paragraph", formValues.paragraph);
+      formData.append("comment", formValues.comment);
+      let parts = formValues.deadline.split(" "); // Split the string by spaces
+      let number = parseInt(parts[0]);
+      formData.append("deadline", number);
+      formData.append("pages", count);
+      formData.append("amount", price);
+      formData.append(
+        "orderFile",
+        document.querySelector('input[type="file"]').files[0]
+      );
+
+      // console.log("Form Submitted", formData);
+      if(localStorage.getItem("token") === null) {
+        alert("Please login to continue");
+        return;
+      }
+      const response = await axios.post(
+        "https://contentlywriters.com:8088/order/add",
+        formData,
+        {
+          headers: {
+            Authorization: `${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="px-4 sm:!px-10 lg:!px-[50px] ">
@@ -245,16 +293,16 @@ export default function Banner() {
 
             <SelectTab
               title="Subject"
-              name="subject"
+              name="temp"
               data={[
                 { value: "Paragraph", name: "Paragraph" },
                 { value: "Writer Choice", name: "Writer Choice" },
                 { value: "Brief Points", name: "Brief Points" },
               ]}
-              value={"Paragraph"}
+              value={formValues.temp}
               handleChange={handleChange}
             />
-            <InputError message={error.paragraph} />
+            <InputError message={error.temp} />
             {/* <SelectTab
               title="Highlight"
               name="highlight"
@@ -265,13 +313,21 @@ export default function Banner() {
               value={formValues.highlight}
               handleChange={handleChange}
             /> */}
-            <Input type="file" placeholder="Choose" className="w-full" />
-            
+            <Input
+              type="file"
+              id="orderFile"
+              name="orderFile"
+              placeholder="Choose"
+              className="w-full"
+              onChange={handleChange}
+            />
+            <InputError message={error.orderFile} />
             <Textarea
               value={formValues.comment}
               onChange={handleChange}
               placeholder="Enter your comment here..."
-              id="message"
+              name="comment"
+              id="comment"
             />
             <InputError message={error.comment} />
             <div className="grid gap-1.5">
@@ -315,7 +371,7 @@ export default function Banner() {
             </div>
             <Button
               type="button"
-              className="w-full h-12  bg-[#000] hover:bg-white hover:text-black"
+              className="w-full h-12  bg-[#000] "
               onClick={handleSubmit}
             >
               Write my assignment
