@@ -1,6 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import Image from "next/image";
+
+import img1 from "@/assets/image/blogImg1.jpg";
+import img2 from "@/assets/image/blogImg2.jpg";
+import img3 from "@/assets/image/blogImg3.jpg";
 
 export default function Blog() {
   function scrollToSection(id) {
@@ -39,6 +44,7 @@ export default function Blog() {
                 {item.heading}
                 {}
               </h1>
+              <Image className="my-4 rounded-lg max-h-[500px]" src={item.image} alt="blog image" />
               <p className="pt-5">{item.about}</p>
               <div>
                 {item.post.map((post, index) => (
@@ -61,6 +67,7 @@ export default function Blog() {
 const data = [
   {
     tag: "1blog",
+    image: img1,
     heading: "A Beginner's Guide to Writing Essays in Proper Format",
     about:
       "Are you feeling overwhelmed by the task of writing an essay? Don't worry, you're not alone. Many students find essay writing challenging, but with the right approach, it can become much more manageable. In this guide, we'll walk through the steps to writing an essay in proper format at an intermediate English level.",
@@ -114,6 +121,7 @@ const data = [
   },
   {
     tag: "2blog",
+    image: img2,
     heading:
       "Decoding Academic Success: The Crucial Role of Choosing the Perfect Assignment Assistance Partner",
     about:
@@ -162,6 +170,7 @@ const data = [
   },
   {
     tag: "3blog",
+    image: img3,
     heading:
       "Unleashing the Power of ROI: A guide to Maximising Returns in Business",
     about: "",

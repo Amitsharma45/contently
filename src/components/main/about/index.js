@@ -3,13 +3,7 @@ import image1 from "@/assets/image/Blog post-amico.svg";
 import image2 from "@/assets/image/Maintenance-bro.svg";
 import image3 from "@/assets/image/Safe-bro.svg";
 import image4 from "@/assets/image/Refund-bro.svg";
-// import image1 from "@/assets/image/5484597.jpg";
-// import image2 from "@/assets/image/5150721.jpg";
-// import image3 from "@/assets/image/5150721.jpg";
-// import image4 from "@/assets/image/19197293.jpg";
-// import image5 from "@/assets/image/5138237.jpg";
-// import image6 from "@/assets/image/5024147.jpg";
-// import image7 from "@/assets/image/4931505.jpg";
+
 import Image from "next/image";
 
 function About() {
@@ -37,7 +31,7 @@ function About() {
               its review services.
             </p>
           </div>
-          <div className="my-10" >
+          <div className="my-10">
             <div className="grid sm:!gap-1 gap-10">
               {data.map((item, index) => (
                 <div
@@ -53,7 +47,9 @@ function About() {
                     <p className="lg:text-4xl sm:text-2xl text-2xl font-bold pb-5 md:text-start text-center">
                       {item.title}
                     </p>
-                    <p className=" md:text-start text-center opacity-90">{item.about}</p>
+                    <p className=" md:text-start text-center opacity-90">
+                      {item.about}
+                    </p>
                   </div>
                   <div className="flex justify-center items-center md:w-[50%] p-5">
                     <Image
@@ -68,13 +64,18 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="bg-[#000000]  lg:h-[250px]">
-        <p className="text-[#FFFFFF] sm:text-[30px] lg:text-[50px] text-[30px] text-center pt-4 mx-auto font-[450]">
-        About our Writers
-        </p>
-        <p className="text-[#FFFFFF] text-[20px] text-center pt-10 mx-auto lg:w-[1280px]">
-        We are lucky to have Writers from different educational backgrounds from many different renowned universities and combined work experience of decades. Get in touch with them through our lined in page.
-        </p>
+      <div className="px-4 sm:!px-10 lg:!px-[50px] bg-[#000000] py-10">
+        <div className="max-w-[1280px] mx-auto">
+          <p className="text-[#FFFFFF] sm:text-[30px] lg:text-[50px] text-[30px] text-center  mx-auto font-[450]">
+            About our Writers
+          </p>
+          <p className="text-[#FFFFFF] sm:text-[20px] text-center pt-5 mx-auto ">
+            We are lucky to have Writers from different educational backgrounds
+            from many different renowned universities and combined work
+            experience of decades. Get in touch with them through our lined in
+            page.
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -78,7 +78,7 @@ const Footer = () => {
             <li>
               <Link
                 className="text-md hover:text-[#03024f] hover:underline"
-                href="/blog"
+                href="/revision-policy"
               >
                 Revision Policy
               </Link>
