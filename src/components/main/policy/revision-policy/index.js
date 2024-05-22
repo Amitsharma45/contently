@@ -17,7 +17,7 @@ export default function RevisionPolicyUI() {
               <p>{item.description}</p>
             </div>
           ))}
-          <div className="font-bold text-xl">
+          <div className="font-bold ">
             Version 1.0. Last modified: April, 2024
           </div>
         </div>

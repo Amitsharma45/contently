@@ -86,7 +86,7 @@ const Footer = () => {
             <li>
               <Link
                 className="text-md hover:text-[#03024f] hover:underline"
-                href="/blog"
+                href="/plagiarism-policy"
               >
                 Plagiarism Policy
               </Link>
