@@ -30,7 +30,7 @@ function ContactUs() {
                   Tel: <u>+91 7727851997</u>
                 </p>
                 <p>Contact us on WhatsApp at these hours:</p>
-                <p> Monday 10:00 AM – Saturday06:00 PM</p>
+                <p> Monday 10:00 AM – Saturday 06:00 PM</p>
               </div>
             </div>
             <div className="grid gap-2">
@@ -58,6 +58,7 @@ function ContactUs() {
           </div>
         </div>
       </div>
+
     </>
   );
 }

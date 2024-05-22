@@ -68,6 +68,14 @@ function About() {
           </div>
         </div>
       </div>
+      <div className="bg-[#000000]  lg:h-[250px]">
+        <p className="text-[#FFFFFF] sm:text-[30px] lg:text-[50px] text-[30px] text-center pt-4 mx-auto font-[450]">
+        About our Writers
+        </p>
+        <p className="text-[#FFFFFF] text-[20px] text-center pt-10 mx-auto lg:w-[1280px]">
+        We are lucky to have Writers from different educational backgrounds from many different renowned universities and combined work experience of decades. Get in touch with them through our lined in page.
+        </p>
+      </div>
     </div>
   );
 }

@@ -295,7 +295,7 @@ export default function Banner() {
               title="Subject"
               name="temp"
               data={[
-                { value: "Paragraph", name: "Paragraph" },
+                { value: "Passage", name: "Passage" },
                 { value: "Writer Choice", name: "Writer Choice" },
                 { value: "Brief Points", name: "Brief Points" },
               ]}
