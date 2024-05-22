@@ -54,7 +54,7 @@ const Footer = () => {
             <li>
               <Link
                 className="text-md hover:text-[#03024f] hover:underline"
-                href="/about"
+                href="/terms-and-conditions"
               >
                 Terms & Conditions
               </Link>
@@ -62,7 +62,7 @@ const Footer = () => {
             <li>
               <Link
                 className="text-md hover:text-[#03024f] hover:underline"
-                href="#faq"
+                href="/privacy-policy"
               >
                 Privacy Policy
               </Link>
@@ -70,7 +70,7 @@ const Footer = () => {
             <li>
               <Link
                 className="text-md hover:text-[#03024f] hover:underline"
-                href="/contact"
+                href="/refund-policy"
               >
                 Refund Policy
               </Link>

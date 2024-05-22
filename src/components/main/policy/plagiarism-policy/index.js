@@ -14,10 +14,10 @@ export default function PlagiarismPolicyUI() {
               <h2 className="font-semibold text-lg">
                 {index + 1} {item.title}
               </h2>
-              <p>{item.description}</p>
+              <p className="opacity-70">{item.description}</p>
             </div>
           ))}
-          <div className="font-bold">
+          <div className="font-bold opacity-80">
             Contentlywriters.com Plagiarism Policy, Last Updated: April 2024.
           </div>
         </div>
