@@ -551,7 +551,7 @@ function TermsAndCondition() {
             </h2>
             <div className="grid gap-3">
               <p>
-                The Website is offered "as is," and we make no warranty that it
+                The Website is offered &ldquo;as is,&ldquo; and we make no warranty that it
                 will satisfy your expectations or requirements. If your computer
                 does not support applicable technologies, such as encryption,
                 you may be unable to access the Website or utilize any or all of
