@@ -23,14 +23,15 @@ function TermsAndCondition() {
             <div>
               <div className="grid gap-4">
                 <p className="">
-                  <span className="font-semibold">"Website"</span> refers to the
-                  total number of web pages available at
+                  <span className="font-semibold">&ldquo;Website&ldquo;</span>{" "}
+                  refers to the total number of web pages available at
                   https://contentlywriters.com and all subdomains thereof, where
                   the Services are provided.
                 </p>
                 <p>
                   <span className="font-semibold">
-                    "User," "You," and "Client"
+                    &ldquo;User,&ldquo; &ldquo;You,&ldquo; and
+                    &ldquo;Client&ldquo;
                   </span>
                   refer to a natural person, individual entrepreneur, or legal
                   entity who has registered as a user on the Website and
@@ -39,44 +40,46 @@ function TermsAndCondition() {
                   Website.
                 </p>
                 <p>
-                  <span className="font-semibold">"We", "Us", and "Ours"</span>
+                  <span className="font-semibold">
+                    &ldquo;We&ldquo;, &ldquo;Us&ldquo;, and &ldquo;Ours&ldquo;
+                  </span>
                   refer to Facio Contently Writers Private Limited, a
                   corporation registered in India. Our registered office is in
                   Mansarovar, Jaipur, Rajasthan 302020.
                 </p>
                 <p>
-                  <span className="font-semibold">"Services"</span> refers to a
+                  <span className="font-semibold">&ldquo;Services&ldquo;</span> refers to a
                   variety of written duties, such as essays, research papers,
                   dissertations, theses, and other written academic works that
                   the Client may require.
                 </p>
                 <p>
-                  <span className="font-semibold">"Account"</span> refers to the
+                  <span className="font-semibold">&ldquo;Account&ldquo;</span> refers to the
                   personalized area of the Website that is closed to public
-                  access and is created following the User's registration. Your
+                  access and is created following the User&#39;s registration. Your
                   Account name and password help to personalize your account.
                 </p>
                 <p>
-                  <span className="font-semibold">"Writer"</span> refers to a
+                  <span className="font-semibold">&ldquo;Writer&ldquo;</span> refers to a
                   person who is employed or contracted by us as a freelancer to
                   offer research and writing services to the Client in
                   accordance with the terms of our agreement.
                 </p>
                 <p>
-                  The term <span className="font-semibold">"Order"</span> refers
-                  to the Customer's request for a Service sent to our Company.
+                  The term <span className="font-semibold">&ldquo;Order&ldquo;</span> refers
+                  to the Customer&#39;s request for a Service sent to our Company.
                   It specifies the sources that will be used in writing as well
                   as the specific needs.
                 </p>
                 <p>
-                  <span className="font-semibold">"Product"</span> is the
+                  <span className="font-semibold">&ldquo;Product&ldquo;</span> is the
                   outcome of an Order, which arrives as original material,
                   prepared and sent to the Client in accordance with his or her
                   query as a digital document.
                 </p>
                 <p>
-                  The term <span className="font-semibold">"Support Team"</span>{" "}
-                  refers to the company's structural unit in charge of
+                  The term <span className="font-semibold">&ldquo;Support Team&ldquo;</span>{" "}
+                  refers to the company&#39;s structural unit in charge of
                   coordinating and assisting with the Order process.
                 </p>
               </div>
@@ -114,7 +117,7 @@ function TermsAndCondition() {
                 payment for the service is received and authorized.
               </p>
               <p>
-                The payment for the service is calculated using the Company's
+                The payment for the service is calculated using the Company&#39;s
                 Pricing and is made in advance, as mentioned on the Order form,
                 once the scope of work has been determined.
               </p>
@@ -158,7 +161,7 @@ function TermsAndCondition() {
                 payment to ensure that the assignment conditions were satisfied
                 successfully, as stipulated by the Client. If a mismatch occurs,
                 we reserve the right to amend the Order to ensure that the
-                Client's requirements are met.
+                Client&#39;s requirements are met.
               </p>
               <p>
                 <span className="font-semibold">Order volume.</span> Each Order
@@ -188,7 +191,7 @@ function TermsAndCondition() {
                 <span className="font-semibold">Communication</span> When
                 seeking additional information, the Client is strongly advised
                 to engage with the Writer or our support staff using the
-                Website's messaging system, or to contact the support team
+                Website&#39;s messaging system, or to contact the support team
                 directly via WhatsApp or mail chat.
               </p>
               <p>
@@ -219,13 +222,13 @@ function TermsAndCondition() {
                 achieving the deadline specified in the order.
               </p>
               <p>
-                t is the Customer's responsibility to ensure that delivery
+                t is the Customer&#39;s responsibility to ensure that delivery
                 routes are available once the Company has supplied the service
                 to the Client. The Company will not be held liable for an
                 invalid email address entered by the Customer in the profile,
                 spam filters, internet outages, or general customer failure to
                 offer communication channels and other contact means that are
-                beyond the Company's control. Customers are encouraged to
+                beyond the Company&#39;s control. Customers are encouraged to
                 contact support if they require any assistance with the delivery
                 of an order.
               </p>
@@ -234,12 +237,12 @@ function TermsAndCondition() {
                 timely manner after the Company provides it to them.
               </p>
               <p>
-                All orders are delivered through the customer's account on the
+                All orders are delivered through the customer&#39;s account on the
                 website via the orders page.
               </p>
               <p>
                 The payments will be released automatically seven days after the
-                deadline, as part of our Writer's Protection. Please thoroughly
+                deadline, as part of our Writer&#39;s Protection. Please thoroughly
                 review each order. Once the Writer receives the entire
                 agreed-upon price, the work is regarded complete, and no refund
                 will be issued.
@@ -268,7 +271,7 @@ function TermsAndCondition() {
               </p>
               <p>
                 Please keep in mind that we reserve the right to deny or limit
-                numerous revision requests if the Client's behavior exhibits
+                numerous revision requests if the Client&#39;s behavior exhibits
                 evident exploitation of the Writer, as well as unreasonable
                 requests.
               </p>
@@ -308,8 +311,8 @@ function TermsAndCondition() {
             <div className="grid gap-3">
               <p>
                 We are responsible for delivering the Product on time and in
-                compliance with the Client's specifications as outlined in the
-                Order. If any of the Client's commitments are breached, the
+                compliance with the Client&#39;s specifications as outlined in the
+                Order. If any of the Client&#39;s commitments are breached, the
                 Client is entitled to partial or full refund under our Money
                 Back Guarantee Policy.
               </p>
@@ -335,7 +338,7 @@ function TermsAndCondition() {
                 Disclaimer regarding links used on contentlywriters.com: While
                 this website may contain connections to other websites, we do
                 not endorse, approve, or guarantee that the content of these
-                links complies with contentlywriters.com's Terms and Conditions.
+                links complies with contentlywriters.com&#39;s Terms and Conditions.
                 As a result, our company does not own, is not liable for, and
                 has no input or control over any of the content resulting from
                 the links provided on our website. Visiting these URLs is at
@@ -376,9 +379,9 @@ function TermsAndCondition() {
                 used as a substitute for your own work. It can only be used as a
                 model paper to teach you how to correctly prepare your own
                 research or to inspire your own thinking. Entire sections of our
-                company's research may be used in the client's original piece of
+                company&#39;s research may be used in the client&#39;s original piece of
                 writing if properly cited or paraphrased. Please review your
-                university's definition of plagiarism for authorized use of
+                university&#39;s definition of plagiarism for authorized use of
                 source material.
               </p>
               <p>
@@ -451,7 +454,7 @@ function TermsAndCondition() {
               <p>
                 Transmitting material that encourages criminal behavior or
                 violates any applicable laws, regulations, or codes of practice.
-                Interfering with other people's use of the Website.
+                Interfering with other people&#39;s use of the Website.
               </p>
               <p>
                 Making, transmitting, or storing electronic copies of materials
@@ -468,7 +471,7 @@ function TermsAndCondition() {
                 may harm another Client, we may stop your access to the Website
                 at any time while we examine the situation. If You attempt to
                 contact the Writer using means other than those permitted by the
-                Website's functionality, we shall consider this activity a
+                Website&#39;s functionality, we shall consider this activity a
                 violation of the Terms.
               </p>
             </div>
@@ -523,7 +526,7 @@ function TermsAndCondition() {
                   property rights to visitors.
                 </p>
                 <p>
-                  You may not copy, transmit, or download any of the Website's
+                  You may not copy, transmit, or download any of the Website&#39;s
                   content unless expressly permitted by these Terms or otherwise
                   agreed upon with us.
                 </p>
