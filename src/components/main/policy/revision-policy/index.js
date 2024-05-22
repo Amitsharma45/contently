@@ -4,17 +4,23 @@ export default function RevisionPolicyUI() {
   return (
     <div className="!px-6 sm:!px-10 lg:!px-[80px] py-5">
       <div className="max-w-[1280px] mx-auto sm:!px-10 lg:!px-[80px] grid gap-8 ">
-        <div className="text-center font-semibold text-5xl my-10">Revision Policy</div>
-        <h1 className="font-semibold text-2xl">{data.heading}</h1>
+        <div className="text-center font-semibold text-5xl my-10">
+          Revision Policy
+        </div>
+        <h1 className="font-semibold text-xl">{data.heading}</h1>
         <div className="grid gap-6">
           {data.item.map((item, index) => (
             <div key={index} className="flex flex-col gap-2">
-              <h2 className="font-semibold text-lg">{index+1}{" "}{item.title}</h2>
+              <h2 className="font-semibold text-lg">
+                {index + 1} {item.title}
+              </h2>
               <p>{item.description}</p>
             </div>
           ))}
+          <div className="font-bold text-xl">
+            Version 1.0. Last modified: April, 2024
+          </div>
         </div>
-        <div className="font-bold text-xl">Version 1.0. Last modified: April, 2024</div>
       </div>
     </div>
   );
