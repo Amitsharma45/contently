@@ -514,49 +514,122 @@ function TermsAndCondition() {
               </div>
               <div className="grid gap-2">
                 <p>3. Intellectual Property Rights on the Website</p>
-                <p>We own or license all intellectual property rights (IPRs) on the website.</p>
-                <p>The Website and its contents do not convey any intellectual property rights to visitors.</p>
-                <p>You may not copy, transmit, or download any of the Website's content unless expressly permitted by these Terms or otherwise agreed upon with us.</p>
+                <p>
+                  We own or license all intellectual property rights (IPRs) on
+                  the website.
+                </p>
+                <p>
+                  The Website and its contents do not convey any intellectual
+                  property rights to visitors.
+                </p>
+                <p>
+                  You may not copy, transmit, or download any of the Website's
+                  content unless expressly permitted by these Terms or otherwise
+                  agreed upon with us.
+                </p>
               </div>
               <div className="grid gap-2">
                 <p>4. Sources Used Feature.</p>
-                <p>You will not receive whole articles or e-books. Rather, snippets from the Product are provided for reference purposes.</p>
-                <p>Furthermore, a service fee is charged for material collection and distribution, as well as access to places where the information can be purchased or seen in full.</p>
-                
+                <p>
+                  You will not receive whole articles or e-books. Rather,
+                  snippets from the Product are provided for reference purposes.
+                </p>
+                <p>
+                  Furthermore, a service fee is charged for material collection
+                  and distribution, as well as access to places where the
+                  information can be purchased or seen in full.
+                </p>
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <h2 className="font-semibold text-[25px]">
-              11. Security & Privacy:-
+              14. Disclaimer and Limitation of liability:-
             </h2>
             <div className="grid gap-3">
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
+              <p>
+                The Website is offered "as is," and we make no warranty that it
+                will satisfy your expectations or requirements. If your computer
+                does not support applicable technologies, such as encryption,
+                you may be unable to access the Website or utilize any or all of
+                the Services.
+              </p>
+              <p>
+                The Website is accessible through the World Wide Web, which is
+                independent of us. Your use of the World Wide Web is entirely at
+                your own risk, and is subject to all applicable national and
+                international laws and regulations. We make no claim that the
+                Website is appropriate or available for use in any jurisdiction.
+              </p>
+              <p>
+                The Website may contain linkages to third-party websites and
+                resources. These third- party websites and resources may have
+                their own terms and privacy policies, which you should consider.
+                We assume no responsibility or liability for any third-party
+                websites or resources, and you access and use such services and
+                content entirely at your own risk. Before providing any personal
+                information to any other website, we urge that you review its
+                rules.
+              </p>
+              <p>
+                In no event will we be liable for any loss or damage resulting
+                from any changes we may make to the Website. We will not be
+                liable for any issues related to the Products and/or Services,
+                including but not limited to:
+              </p>
+              <p>
+                phone, electronic, hardware or software, network, Internet,
+                email, or computer malfunctions, failures or difficulties of any
+                kind; failed, incomplete, garbled or delayed computer and/or
+                email transmissions;
+              </p>
+              <p>
+                any condition caused by events beyond the control of the company
+                that might cause the Product and/or Services to be (as
+                applicable) delayed, disrupted, or corrupted;
+              </p>
+              <p>
+                any injuries, losses or damages of any kind arising in
+                connection with, or as a result of, utilizing the Services; or
+                any printing or typographical errors in any Product(s).We will
+                not have any liability to You or any other person, whether
+                arising out of or in connection with your use of the Website, or
+                Your inability to use the Website, or for any other reason
+                including, without limitation, for: any matters due to any
+                events outside our reasonable control; or any unforeseeable
+                losses or damages. Nothing in these Terms is intended to reduce
+                or eliminate any responsibility for death or personal damage
+                caused by negligence, fraudulent misrepresentation, or any other
+                liability that cannot be restricted or excluded by law, or to
+                affect Your statutory rights as a consumer.
+              </p>
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <h2 className="font-semibold text-[25px]">
-              11. Security & Privacy:-
+              15. Governing Law and Amendments:-
             </h2>
             <div className="grid gap-3">
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <h2 className="font-semibold text-[25px]">
-              11. Security & Privacy:-
-            </h2>
-            <div className="grid gap-3">
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
+              <p>
+                These Terms of Use, as well as any non-contractual duties
+                arising from or in conjunction with them, will be governed by
+                and construed in accordance with Indian laws. Any dispute,
+                controversy, or claim originating from or in connection with
+                these Terms of Use, or their violation, termination, or nullity,
+                shall be resolved by arbitration under the Arbitration and
+                Conciliation Act, 1996. The arbitration shall take place in New
+                Delhi, India. The courts of New Delhi, India, shall have
+                exclusive jurisdiction over any and all claims or disputes that
+                arise from these Terms of Use.
+              </p>
+              <p>
+                We reserve the right to amend these Terms of Use at any time,
+                without notice, by posting revised terms on this website. You
+                are responsible for reviewing the website regularly to ensure
+                that you are aware of any changes to these Terms of Use. Your
+                continued use of the website following any changes to the Terms
+                of Use will be considered acceptance of those changes.
+              </p>
             </div>
           </div>
 
