@@ -12,8 +12,8 @@ export default function FAQ() {
     <div id="faq" className="px-4 sm:!px-10 lg:!px-[50px] bg-black">
       <div className="max-w-[1280px] mx-auto py-16">
         <h1 className="text-white lg:text-5xl sm:text-3xl text-2xl  font-semibold md:px-20 sm:px-10">
-          Frequently asked questions{"  "}
-          <span className="text-[#003cff]">Zero Plagiarism</span>
+          Frequently asked {"  "}
+          <span className="text-[#003cff]">questions</span>
         </h1>
         <Accordion
           type="single"

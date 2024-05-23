@@ -13,11 +13,10 @@ import {
 
 import { BiMenu } from "react-icons/bi";
 import Link from "next/link";
-import { useUserContext } from '@/context/auth';
+import { useUserContext } from "@/context/auth";
 
 export default function SmallNavbar({ items, item2 }) {
-
-  const { isLoading, isAuthenticated ,setIsAuthenticated} = useUserContext();
+  const { isLoading, isAuthenticated, setIsAuthenticated } = useUserContext();
   const handleLogout = () => {
     try {
       localStorage.removeItem("token");
@@ -59,29 +58,49 @@ export default function SmallNavbar({ items, item2 }) {
           ))}
 
           {isAuthenticated ? (
-            <>
+            <div className="grid gap-2">
               <SheetClose asChild>
                 <Button
-                  size="sm"
-                  variant="link"
-                  className="text-md font-normal hover:text-red-500 transition-colors ease-in-out duration-300 text-left"
+                  variant="outline"
+                  className=" hover:bg-[#3c46d5] hover:text-[#ffffff] border-[#3c46d5] border-opacity-100 inline w-[100px]"
                   onClick={handleLogout}
                 >
                   Logout
                 </Button>
+              </SheetClose>
+              <SheetClose asChild>
                 <Link href="/dashboard">
-                  <Button className="mb-4">Dashboard</Button>
+                  <Button 
+                  variant="outline"
+                   className="mb-4 hover:bg-[#3c46d5] hover:text-[#ffffff] border-[#3c46d5] border-opacity-100">
+                    Dashboard
+                  </Button>
                 </Link>
               </SheetClose>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="grid gap-2">
               <SheetClose asChild>
                 <Link href="/sign-up">
-                  <Button className="mb-4">Sign In</Button>
+                  <Button
+                    variant="outline"
+                    className=" hover:bg-[#3c46d5] hover:text-[#ffffff] border-[#3c46d5] border-opacity-100"
+                  >
+                    Sign up
+                  </Button>
                 </Link>
               </SheetClose>
-            </>
+              <SheetClose asChild>
+                <Link href="/login">
+                  <Button
+                    variant="outline"
+                    className="hover:bg-[#3c46d5] hover:text-[#ffffff] border-[#3c46d5] border-opacity-100"
+                  >
+                    Sign in
+                  </Button>
+                </Link>
+              </SheetClose>
+            </div>
           )}
         </SheetContent>
       </Sheet>
