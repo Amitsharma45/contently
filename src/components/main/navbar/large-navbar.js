@@ -33,6 +33,10 @@ export default function LargeNavbar({ items }) {
         {isAuthenticated ? (
           <>
             <button onClick={handleLogout}  className="menu-block">Logout</button>
+            <Link href="/dashboard">
+            <button  className="menu-block">Dashboard</button>
+            </Link>
+            
           </>
         ) : (
           <>

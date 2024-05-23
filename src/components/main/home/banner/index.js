@@ -30,9 +30,9 @@ export default function Banner() {
     topic: "",
     paragraph: "",
     comment: "",
-    deadline: "1 day",
+    deadline: "14 days",
     orderFile: "",
-    temp: "Paragraph",
+    temp: "Passage",
   });
 
   const [count, setCount] = useState(1);
@@ -366,7 +366,7 @@ export default function Banner() {
                 </Button>
               </div>
             </div>
-            <div className="text-center text-3xl">
+            <div className="text-center text-2xl">
               Estimated Price: {price}$
             </div>
             <Button

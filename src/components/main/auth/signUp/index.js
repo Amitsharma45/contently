@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,9 @@ import InputError from "@/components/ui/input-error";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation"; // Correct import for useRouter in App Router
 
 export default function SignUpScreen() {
   const [formValues, setFormValues] = useState({
@@ -21,8 +24,12 @@ export default function SignUpScreen() {
     password: "",
   });
 
+  const router = useRouter(); // Use next/navigation for the new App Router
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value.trim() });
+
     if (!value) {
       setErrors({
         ...errors,
@@ -34,22 +41,22 @@ export default function SignUpScreen() {
     } else {
       setErrors({ ...errors, [name]: "" });
     }
-    setFormValues({ ...formValues, [name]: value.trim() });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const error = {};
-      if (!formValues.firstName) error.firstName = "Please enter first name";
-      if (!formValues.lastName) error.lastName = "Please enter last name";
-      if (!formValues.email) error.email = "Please enter email";
-      if (!formValues.password) error.password = "Please enter password";
-      if (Object.keys(error).length > 0) {
-        setErrors(error);
-        return;
-      }
 
+    const error = {};
+    if (!formValues.firstName) error.firstName = "Please enter first name";
+    if (!formValues.lastName) error.lastName = "Please enter last name";
+    if (!formValues.email) error.email = "Please enter email";
+    if (!formValues.password) error.password = "Please enter password";
+    if (Object.keys(error).length > 0) {
+      setErrors(error);
+      return;
+    }
+
+    try {
       console.log("Form Values:", formValues);
 
       const response = await axios.post(
@@ -64,23 +71,44 @@ export default function SignUpScreen() {
       );
 
       localStorage.setItem("token", response.data.token);
-      
+
       console.log("Response:", response.data);
+
+      toast.success("Signup successful!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      setTimeout(() => {
+        router.push("/");
+      }, 2000); // Redirect after 2 seconds
     } catch (err) {
       console.log(err);
+      toast.error("Signup failed. Please try again.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
-      <div className="border-2 rounded-lg sm:w-[400px]  p-8 ">
-        <h1 className="text-3xl font-bold text-center pb-10">
-          Contently Writers
-        </h1>
-        <form className="grid gap-4">
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="border-2 rounded-lg sm:w-[400px] p-8">
+        <h1 className="text-3xl font-bold text-center pb-10">Contently Writers</h1>
+        <form className="grid gap-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div className="grid items-center gap-1.5">
-              <Label htmlFor="login">First Name</Label>
+              <Label htmlFor="firstName">First Name</Label>
               <Input
                 id="firstName"
                 name="firstName"
@@ -91,7 +119,7 @@ export default function SignUpScreen() {
               />
               <InputError message={errors.firstName} />
             </div>
-            <div className="grid  items-center gap-1.5">
+            <div className="grid items-center gap-1.5">
               <Label htmlFor="lastName">Last Name</Label>
               <Input
                 id="lastName"
@@ -105,7 +133,7 @@ export default function SignUpScreen() {
             </div>
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="login">Email</Label>
+            <Label htmlFor="email">Email</Label>
             <Input
               id="email"
               name="email"
@@ -117,7 +145,7 @@ export default function SignUpScreen() {
             <InputError message={errors.email} />
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="login">Password</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
               id="password"
               name="password"
@@ -128,9 +156,7 @@ export default function SignUpScreen() {
             />
             <InputError message={errors.password} />
           </div>
-          <Button type="button" onClick={handleSubmit}>
-            Register
-          </Button>
+          <Button type="submit">Register</Button>
           <div className="text-center">
             Already have an account?{" "}
             <Link href="/login" className="underline">
@@ -143,6 +169,7 @@ export default function SignUpScreen() {
           </Button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

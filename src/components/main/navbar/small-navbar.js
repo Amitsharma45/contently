@@ -69,6 +69,9 @@ export default function SmallNavbar({ items, item2 }) {
                 >
                   Logout
                 </Button>
+                <Link href="/dashboard">
+                  <Button className="mb-4">Dashboard</Button>
+                </Link>
               </SheetClose>
             </>
           ) : (
