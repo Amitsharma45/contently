@@ -10,8 +10,10 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation"; // Correct import for useRouter in App Router
+import { useUserContext } from "@/context/auth";
 
 export default function SignUpScreen() {
+  const { getProfile } = useUserContext();
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -84,6 +86,7 @@ export default function SignUpScreen() {
         progress: undefined,
       });
 
+      getProfile();
       setTimeout(() => {
         router.push("/");
       }, 2000); // Redirect after 2 seconds

@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/auth";
+
 export default function LoginScreen() {
   const { getProfile } = useUserContext();
   const router = useRouter();
