@@ -27,7 +27,7 @@ const Footer = () => {
             <li>
               <Link
                 className="text-md hover:text-[#03024f] hover:underline"
-                href="#faq"
+                href="/#faq"
               >
                 FAQ
               </Link>

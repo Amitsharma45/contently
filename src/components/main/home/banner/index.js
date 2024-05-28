@@ -63,10 +63,23 @@ export default function Banner() {
     } else {
       setError({ ...error, [name]: "" });
     }
-    if(name=="orderFile") {
-      
+    if (name === "orderFile") {
+      const maxSizeInBytes = 10 * 1024 * 1024 ;
+
+      const file = e.target.files[0];
+      console.log({file:file.size,maxSizeInBytes });
+      if (file.size > maxSizeInBytes) {
+        setError({ ...error, [name]: "File is too large. Max size is 10MB" });
+        return;
+      }else{
+        setError({ ...error, [name]: "" });
+        setFormValues({ ...formValues, [name]: file });
+      }
+     
+    }else{
+      setFormValues({ ...formValues, [name]: value });
     }
-    setFormValues({ ...formValues, [name]: value });
+
   };
 
   function scrollToSection() {
@@ -216,7 +229,7 @@ export default function Banner() {
       );
 
       // console.log("Form Submitted", formData);
-      if(localStorage.getItem("token") === null) {
+      if (localStorage.getItem("token") === null) {
         alert("Please login to continue");
         return;
       }
