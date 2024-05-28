@@ -335,7 +335,7 @@ export default function Banner() {
               name="orderFile"
               placeholder="Choose"
               className="w-full"
-              accept=".pdf , .docx"
+              accept=".pdf, .docx, .png, .jpeg, .jpg, .txt"
               onChange={handleChange}
             />
             <InputError message={error.orderFile} />

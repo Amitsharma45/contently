@@ -5,32 +5,30 @@ import logo from "@/assets/image/Screenshot 2024-04-03 142353.png";
 
 export default function NavbarDashBoard() {
   return (
-    <div className="!px-6  py-5 bg-black">
-      <div className="max-w-[1280px] mx-auto ">
+    <div className="!px-6 py-5 bg-black">
+      <div className="max-w-[1280px] mx-auto flex items-center justify-between">
         <Link href={"/"}>
-        <Image 
+          <Image 
             src={logo}
             alt="logo"
-            width={100}
-            height={100}
-        />
+            width={120}
+            height={120}
+          />
         </Link>
         
-        <div className="flex justify-between my-2">
-          <div>
-            <Link className="text-white" href={"#"}>
-              My Orders
-            </Link>
-          </div>
-          <div className="flex gap-5">
-            <Link className="text-white" href={"#"}>
+        <div className="flex items-center gap-10">
+          <Link className="text-white" href={"/dashboard"}>
+            My Orders
+          </Link>
+         
+            <Link className="text-white" href={"/"}>
               New Order
             </Link>
-            <Link className="text-white" href={"#"}>
+            <Link className="text-white" href="/contact">
               Free Inquiry
             </Link>
           </div>
-        </div>
+        
       </div>
     </div>
   );
