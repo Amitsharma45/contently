@@ -33,8 +33,7 @@ export default function DashBoardFooter() {
             </li>
           </ul>
           <div className="text-white text-center" >
-            © 2024 Facio Contently Writers Pvt Ltd. Registration number 123****.
-            All Rights Reserved.
+            © Facio Contently Writers Private Limited. All Rights Reserved.
           </div>
         </div>
       </div>

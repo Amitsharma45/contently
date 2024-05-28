@@ -63,6 +63,9 @@ export default function Banner() {
     } else {
       setError({ ...error, [name]: "" });
     }
+    if(name=="orderFile") {
+      
+    }
     setFormValues({ ...formValues, [name]: value });
   };
 
@@ -319,6 +322,7 @@ export default function Banner() {
               name="orderFile"
               placeholder="Choose"
               className="w-full"
+              accept=".pdf , .docx"
               onChange={handleChange}
             />
             <InputError message={error.orderFile} />
