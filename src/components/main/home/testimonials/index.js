@@ -51,10 +51,10 @@ export default function Testimonials() {
                 {testimonialItems.map((item, index) => (
                   <CarouselItem
                     key={index}
-                    className="sm:basis-1/2 lg:basis-1/3 "
+                    className="sm:basis-1/2 lg:basis-1/3"
                   >
                     <div className="p-1">
-                      <Card className="min-h-[350px]">
+                      <Card className="min-h-[400px]">
                         <CardHeader className="flex justify-center items-center">
                           <Image
                             src={img}
@@ -108,73 +108,59 @@ export default function Testimonials() {
 
 const testimonialItems = [
   {
-    name: "Kunal",
+    name: "Sarah M., California, USA",
     stars: 5,
     message:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis diam eu mass.",
+      "Absolutely fantastic service! They helped me with my research paper, and the quality was top-notch. Highly recommend for any student in need of writing assistance.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Akshat",
+    name: "James K., New York, USA",
     stars: 4,
     message:
-      "Vestibulum id sapien at ligula feugiat hendrerit. Mauris dapibus, justo vitae ve.",
+      "Great experience from start to finish. My essay was well-written and delivered on time. I couldn't have asked for more.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Arun",
+    name: "Emily W., Sydney, Australia",
     stars: 5,
     message:
-      "Nullam consequat tincidunt velit, nec eleifend arcu mattis id. Donec bi.",
+      "Exceptional service! The team really understood my requirements and delivered a perfectly written assignment. It's definitely my go-to for future projects.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Mohit",
+    name: "Liam H., Melbourne, Australia",
     stars: 4,
     message:
-      "Sed pretium sit amet sem at aliquet. Nullam eget ex at enim luctus lacinia.",
+      "Highly professional and reliable. They saved me so much time, and my grades have never been better. Thank you!",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Manish",
+    name: "Charlotte R., London, UK",
     stars: 4,
     message:
-      "In ut orci nec libero scelerisque rhoncus. Proin eu sollicitudin ipsum Aliquam .",
+      "I was struggling with my dissertation, but their expert writers came to the rescue. The quality and attention to detail were impressive. Highly recommended!",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Ashish",
+    name: "Oliver B., Manchester, UK",
     stars: 5,
     message:
-      "Maecenas fermentum mi at vestibulum varius. In nec erat ac arcu pretium vestibulum.",
+      "Top-class service! The writers are knowledgeable and friendly. My essay exceeded all expectations. Will be using them again for sure.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Sahil",
+    name: "Henry Brown, Toronto, Canada ",
     stars: 4,
     message:
-      "Suspendisse potenti. Curabitur sodales libero vitae felis fermentum, at tincidunt quam.",
+      "My assignments were delivered on time and met all of the requirements. This service has been extremely useful during my hectic semester.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   {
-    name: "Rinku",
+    name: "Arlo Smith, St. John's, Canada ",
     stars: 5,
     message:
-      "Morbi quis lorem nec nisi accumsan finibus. Aliquam erat volutpat. Cras vel elit nec libero.",
-    image: "image/Screenshot 2024-04-10 165307.png",
-  },
-  {
-    name: "Chinku",
-    stars: 4,
-    message:
-      "Donec finibus elit vel neque posuere, ac fermentum nisi scelerisque. Nulla facilisi. Nulla facilisi.",
-    image: "image/Screenshot 2024-04-10 165307.png",
-  },
-  {
-    name: "Ashish",
-    stars: 5,
-    message:
-      "Pellentesque vel orci sit amet sem rhoncus varius nec et risus. Fusce vitae tristique turpis.",
+      "The writer assigned to my project was extremely knowledgeable and produced detailed, well-argued information. The entire process went smoothly and stress-free. I strongly suggest it to any student looking for high-quality academic writing.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   // Add more testimonials as needed
