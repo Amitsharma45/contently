@@ -160,7 +160,7 @@ const testimonialItems = [
     name: "Arlo Smith, St. John's, Canada ",
     stars: 5,
     message:
-      "The writer assigned to my project was extremely knowledgeable and produced detailed, well-argued information. The entire process went smoothly and stress-free. I strongly suggest it to any student looking for high-quality academic writing.",
+      "The writer assigned to my project was extremely knowledgeable and produced detailed, well-argued information. The entire process went smoothly and stress-free.",
     image: "image/Screenshot 2024-04-10 165307.png",
   },
   // Add more testimonials as needed
