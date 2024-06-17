@@ -6,11 +6,14 @@ import { Button } from "@/components/ui/button";
 import InputError from "@/components/ui/input-error";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation"; // Correct import for useRouter in App Router
 import { useUserContext } from "@/context/auth";
+import logo from "@/assets/image/contently-logo.png";
+import Image from "next/image";
 
 export default function SignUpScreen() {
   const { getProfile } = useUserContext();
@@ -19,12 +22,17 @@ export default function SignUpScreen() {
     lastName: "",
     email: "",
     password: "",
+    confirmPassword: ""
   });
 
   const [errors, setErrors] = useState({
     email: "",
     password: "",
+    confirmPassword: ""
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const router = useRouter(); // Use next/navigation for the new App Router
 
@@ -45,6 +53,13 @@ export default function SignUpScreen() {
     }
   };
 
+  const validatePassword = (password) => {
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    return hasLetter && hasNumber && hasSpecialChar;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -53,6 +68,12 @@ export default function SignUpScreen() {
     if (!formValues.lastName) error.lastName = "Please enter last name";
     if (!formValues.email) error.email = "Please enter email";
     if (!formValues.password) error.password = "Please enter password";
+    if (!validatePassword(formValues.password)) {
+      error.password = "Password must contain at least one letter, one number, and one special character";
+    }
+    if (formValues.password !== formValues.confirmPassword) {
+      error.confirmPassword = "Passwords do not match";
+    }
     if (Object.keys(error).length > 0) {
       setErrors(error);
       return;
@@ -104,10 +125,28 @@ export default function SignUpScreen() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="border-2 rounded-lg sm:w-[400px] p-8">
-        <h1 className="text-3xl font-bold text-center pb-10">Contently Writers</h1>
+        <h1 className="text-3xl font-bold text-center pb-10">
+        <Link href="/">
+          <div className="flex items-center justify-center">
+            <Image
+              src={logo}
+              alt="Pangram Logo"
+              className="h-[80px] w-[180px]"
+            />
+          </div>
+        </Link>
+        </h1>
         <form className="grid gap-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div className="grid items-center gap-1.5">
@@ -147,17 +186,41 @@ export default function SignUpScreen() {
             />
             <InputError message={errors.email} />
           </div>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
+          <div className="grid w-full max-w-sm items-center gap-1.5 relative">
             <Label htmlFor="password">Password</Label>
             <Input
               id="password"
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Enter your Password"
               value={formValues.password}
               onChange={handleChange}
             />
+            <div
+              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </div>
             <InputError message={errors.password} />
+          </div>
+          <div className="grid w-full max-w-sm items-center gap-1.5 relative">
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Confirm your Password"
+              value={formValues.confirmPassword}
+              onChange={handleChange}
+            />
+            <div
+              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+              onClick={toggleConfirmPasswordVisibility}
+            >
+              {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+            </div>
+            <InputError message={errors.confirmPassword} />
           </div>
           <Button type="submit">Register</Button>
           <div className="text-center">

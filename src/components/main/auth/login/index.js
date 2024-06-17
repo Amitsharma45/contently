@@ -9,6 +9,8 @@ import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/context/auth";
+import logo from "@/assets/image/contently-logo.png";
+import Image from "next/image";
 
 export default function LoginScreen() {
   const { getProfile } = useUserContext();
@@ -80,7 +82,15 @@ export default function LoginScreen() {
     <div className="flex justify-center items-center h-screen">
       <div className="border-2 rounded-lg sm:w-[400px]  p-8 ">
         <h1 className="text-3xl font-bold text-center pb-10">
-          Contently Writers
+        <Link href="/">
+          <div className="flex items-center justify-center">
+            <Image
+              src={logo}
+              alt="Pangram Logo"
+              className="h-[80px] w-[180px]"
+            />
+          </div>
+        </Link>
         </h1>
         <form className="grid gap-6">
           <div className="grid w-full max-w-sm items-center gap-1.5">

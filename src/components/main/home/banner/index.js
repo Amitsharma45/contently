@@ -64,22 +64,20 @@ export default function Banner() {
       setError({ ...error, [name]: "" });
     }
     if (name === "orderFile") {
-      const maxSizeInBytes = 10 * 1024 * 1024 ;
+      const maxSizeInBytes = 10 * 1024 * 1024;
 
       const file = e.target.files[0];
-      console.log({file:file.size,maxSizeInBytes });
+      console.log({ file: file.size, maxSizeInBytes });
       if (file.size > maxSizeInBytes) {
         setError({ ...error, [name]: "File is too large. Max size is 10MB" });
         return;
-      }else{
+      } else {
         setError({ ...error, [name]: "" });
         setFormValues({ ...formValues, [name]: file });
       }
-     
-    }else{
+    } else {
       setFormValues({ ...formValues, [name]: value });
     }
-
   };
 
   function scrollToSection() {
@@ -249,6 +247,18 @@ export default function Banner() {
       console.log(err);
     }
   };
+
+  const [selectedFileName, setSelectedFileName] = useState("");
+
+  const handleFileChange = (event) => {
+    if (event.target.files.length > 0) {
+      setSelectedFileName(event.target.files[0].name);
+    } else {
+      setSelectedFileName("");
+    }
+    handleChange(event); // Call the passed-in handleChange function
+  };
+
   return (
     <div className="px-4 sm:!px-10 lg:!px-[50px] ">
       <div className="max-w-[1280px] mx-auto  flex lg:flex-row flex-col gap-10">
@@ -312,7 +322,6 @@ export default function Banner() {
               name="temp"
               data={[
                 { value: "Passage", name: "Passage" },
-                { value: "Writer Choice", name: "Writer Choice" },
                 { value: "Brief Points", name: "Brief Points" },
               ]}
               value={formValues.temp}
@@ -329,16 +338,29 @@ export default function Banner() {
               value={formValues.highlight}
               handleChange={handleChange}
             /> */}
-            <Input
-              type="file"
-              id="orderFile"
-              name="orderFile"
-              placeholder="Choose"
-              className="w-full"
-              accept=".pdf, .docx, .png, .jpeg, .jpg, .txt"
-              onChange={handleChange}
-            />
-            <InputError message={error.orderFile} />
+            <div className="relative w-full">
+              <label
+                htmlFor="orderFile"
+                className="cursor-pointer inline-block"
+              >
+                <Button>Choose file</Button>
+              </label>
+              <Input
+                type="file"
+                id="orderFile"
+                name="orderFile"
+                className="absolute inset-0 opacity-0 w-full cursor-pointer"
+                accept=".pdf, .docx, .png, .jpeg, .jpg, .txt"
+                onChange={handleFileChange}
+              />
+              {selectedFileName && (
+                <div className="mt-2 text-sm text-gray-600">
+                  {selectedFileName}
+                </div>
+              )}
+              {error.orderFile && <InputError message={error.orderFile} />}
+            </div>
+
             <Textarea
               value={formValues.comment}
               onChange={handleChange}
