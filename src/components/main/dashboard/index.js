@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 export default function DashBoard() {
   return (
     <>
-      <div className="px-5 my-5">
+      <div className="px-5 py-5 h-screen">
         <Tabs defaultValue="recent" className="">
           <TabsList className="bg-transparent ">
             <TabsTrigger value="recent">Recent</TabsTrigger>
@@ -17,11 +17,13 @@ export default function DashBoard() {
             <TabsTrigger value="cancelled">Cancelled</TabsTrigger>
           </TabsList>
           <TabsContent value="recent">
-            <div className="grid justify-center items-center gap-2 py-4">
+            <div className="flex items-center  flex-col justify-center gap-2 py-4">
               <Image src={img} alt="loading" width={200} height={200} />
               <p>There are no orders yet</p>
               <Link href={"/"} className="grid justify-center items-center">
-                <Button className="bg-[#0040ff] hover:bg-red-600">New Order</Button>
+                <Button className="bg-[#0040ff] hover:bg-red-600">
+                  New Order
+                </Button>
               </Link>
             </div>
           </TabsContent>
@@ -30,7 +32,9 @@ export default function DashBoard() {
               <Image src={img} alt="loading" width={200} height={200} />
               <p>There are no finished orders</p>
               <Link href={"/"} className="grid justify-center items-center">
-                <Button className="bg-[#0040ff] hover:bg-red-600">New Order</Button>
+                <Button className="bg-[#0040ff] hover:bg-red-600">
+                  New Order
+                </Button>
               </Link>
             </div>
           </TabsContent>
@@ -39,7 +43,9 @@ export default function DashBoard() {
               <Image src={img} alt="loading" width={200} height={200} />
               <p>There are no cancelled orders</p>
               <Link href={"/"} className="grid justify-center items-center">
-                <Button className="bg-[#0040ff] hover:bg-red-600">New Order</Button>
+                <Button className="bg-[#0040ff] hover:bg-red-600">
+                  New Order
+                </Button>
               </Link>
             </div>
           </TabsContent>

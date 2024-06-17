@@ -22,13 +22,13 @@ export default function SignUpScreen() {
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -69,7 +69,8 @@ export default function SignUpScreen() {
     if (!formValues.email) error.email = "Please enter email";
     if (!formValues.password) error.password = "Please enter password";
     if (!validatePassword(formValues.password)) {
-      error.password = "Password must contain at least one letter, one number, and one special character";
+      error.password =
+        "Password must contain at least one letter, one number, and one special character";
     }
     if (formValues.password !== formValues.confirmPassword) {
       error.confirmPassword = "Passwords do not match";
@@ -137,15 +138,15 @@ export default function SignUpScreen() {
     <div className="flex justify-center items-center min-h-screen">
       <div className="border-2 rounded-lg sm:w-[400px] p-8">
         <h1 className="text-3xl font-bold text-center pb-10">
-        <Link href="/">
-          <div className="flex items-center justify-center">
-            <Image
-              src={logo}
-              alt="Pangram Logo"
-              className="h-[80px] w-[180px]"
-            />
-          </div>
-        </Link>
+          <Link href="/">
+            <div className="flex items-center justify-center">
+              <Image
+                src={logo}
+                alt="Pangram Logo"
+                className="h-[80px] w-[180px]"
+              />
+            </div>
+          </Link>
         </h1>
         <form className="grid gap-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
@@ -188,40 +189,56 @@ export default function SignUpScreen() {
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5 relative">
             <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your Password"
-              value={formValues.password}
-              onChange={handleChange}
-            />
-            <div
-              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-              onClick={togglePasswordVisibility}
-            >
-              {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-            </div>
+            <span className="relative w-full flex items-center">
+              <Input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your Password"
+                value={formValues.password}
+                onChange={handleChange}
+              />
+              {!showPassword ? (
+                <AiFillEyeInvisible
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-2.5 text-gray-500 text-xl cursor-pointer"
+                />
+              ) : (
+                <AiFillEye
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-2.5 text-gray-500 text-xl cursor-pointer"
+                />
+              )}
+            </span>
             <InputError message={errors.password} />
           </div>
           <div className="grid w-full max-w-sm items-center gap-1.5 relative">
             <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <Input
-              id="confirmPassword"
-              name="confirmPassword"
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm your Password"
-              value={formValues.confirmPassword}
-              onChange={handleChange}
-            />
-            <div
-              className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-              onClick={toggleConfirmPasswordVisibility}
-            >
-              {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-            </div>
+
+            <span className="relative w-full flex items-center">
+              <Input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm your Password"
+                value={formValues.confirmPassword}
+                onChange={handleChange}
+              />
+              {!showConfirmPassword ? (
+                <AiFillEyeInvisible
+                  onClick={toggleConfirmPasswordVisibility}
+                  className="absolute right-2.5 text-gray-500 text-xl cursor-pointer"
+                />
+              ) : (
+                <AiFillEye
+                  onClick={toggleConfirmPasswordVisibility}
+                  className="absolute right-2.5 text-gray-500 text-xl cursor-pointer"
+                />
+              )}
+            </span>
             <InputError message={errors.confirmPassword} />
           </div>
+
           <Button type="submit">Register</Button>
           <div className="text-center">
             Already have an account?{" "}

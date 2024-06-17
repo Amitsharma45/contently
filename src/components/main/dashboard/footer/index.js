@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 export default function DashBoardFooter() {
   return (
-    <div className="!px-6 sm:!px-10 lg:!px-[80px] py-5 bg-black mt-40 h-[150px]">
+    <div className="!px-6 sm:!px-10 lg:!px-[80px] py-5 bg-black  min-h-[100px]">
       <div className="max-w-[1280px] mx-auto ">
-        <div>
-          <ul className="flex flex-nowrap gap-4 text-white justify-center">
+        <div className='grid gap-6'>
+          <ul className="flex flex-wrap gap-4 whitespace-nowrap  text-white justify-between ">
             <li>
               <Link href={"/revision-policy"} className="hover:underline">
               Revision Policy
