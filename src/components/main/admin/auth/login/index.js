@@ -61,7 +61,7 @@ export default function LoginScreen() {
 
       console.log("Form Values:", formValues);
       const response = await axios.post(
-        "https://3.67.178.53:8088/user/login",
+        "https://contentlywriters.com:8088/user/login",
         formValues
       );
 
