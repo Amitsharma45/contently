@@ -48,6 +48,7 @@ export default function LoginScreen() {
   };
 
   const handleSubmit = async (e) => {
+    console.log("login")
     e.preventDefault();
     try {
       const error = {};
@@ -60,7 +61,7 @@ export default function LoginScreen() {
 
       console.log("Form Values:", formValues);
       const response = await axios.post(
-        "https://contentlywriters.com:8088/user/login",
+        "https://3.67.178.53:8088/user/login",
         formValues
       );
 
@@ -75,7 +76,7 @@ export default function LoginScreen() {
       }
 
       getProfile();
-      router.replace("/");
+      router.replace("/admin/orders");
     } catch (err) {
       console.log(err);
       const error = {};

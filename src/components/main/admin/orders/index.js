@@ -12,6 +12,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 function AdminOrderScreen() {
+
+  const response = await axios.post("https://contentlywriters.com:8088/order")
+
+
+
+
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-[#3C46D5]">
       <div className="flex justify-between w-full max-w-[90%] sm:w-[1000px] mb-4">
