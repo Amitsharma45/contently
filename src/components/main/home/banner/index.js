@@ -23,6 +23,15 @@ import axios from "axios";
 import InputError from "@/components/ui/input-error";
 
 export default function Banner() {
+
+  // const checkoutHandler = async({orderDetails}) => {
+  //   const orderData  = await axios.post("https://contentlywriters.com:8088/order", {data: orderDetails})
+  //   console.log({orderData})
+  // }
+
+
+
+
   const [isClient, setIsClient] = useState(false);
 
   const [formValues, setFormValues] = useState({
@@ -33,6 +42,7 @@ export default function Banner() {
     deadline: "14 days",
     orderFile: "",
     temp: "Passage",
+    pages: 30
   });
 
   const [count, setCount] = useState(1);
@@ -191,58 +201,97 @@ export default function Banner() {
 
   const handleSubmit = async (e) => {
     try {
-      e.preventDefault();
-      const error = {};
-      if (!formValues.topic) error.topic = "Please enter topic";
-      if (!formValues.orderFile) error.orderFile = "Select  enter File";
-      if (!formValues.comment) error.comment = "Please enter comment";
-      if (!formValues.deadline) error.deadline = "Please enter deadline";
-      if (!formValues.subject) error.subject = "Please enter subject";
-      setError(error);
-      console.log(error);
-      if (Object.keys(error).length > 0) return;
+      // e.preventDefault();
+      // const error = {};
+      // if (!formValues.topic) error.topic = "Please enter topic";
+      // if (!formValues.orderFile) error.orderFile = "Select  enter File";
+      // if (!formValues.comment) error.comment = "Please enter comment";
+      // if (!formValues.deadline) error.deadline = "Please enter deadline";
+      // if (!formValues.subject) error.subject = "Please enter subject";
+      // setError(error);
+      // console.log(error);
+      // if (Object.keys(error).length > 0) return;
 
-      const data = {
-        count,
-        ...formValues,
-        amount: price,
-      };
-      if (localStorage.getItem("token") === null) {
-        alert("Please login to continue");
-        return;
-      }
-      let formData = new FormData();
-      formData.append("subject", formValues.subject);
-      formData.append("topic", formValues.topic);
-      // formData.append("paragraph", formValues.paragraph);
-      formData.append("comment", formValues.comment);
-      let parts = formValues.deadline.split(" "); // Split the string by spaces
-      let number = parseInt(parts[0]);
-      formData.append("deadline", number);
-      formData.append("pages", count);
-      formData.append("amount", price);
-      formData.append(
-        "orderFile",
-        document.querySelector('input[type="file"]').files[0]
-      );
+      // const data = {
+      //   count,
+      //   ...formValues,
+      //   amount: price,
+      // };
+      // if (localStorage.getItem("token") === null) {
+      //   alert("Please login to continue");
+      //   return;
+      // }
+      // let formData = new FormData();
+      // formData.append("subject", formValues.subject);
+      // formData.append("topic", formValues.topic);
+      // // formData.append("paragraph", formValues.paragraph);
+      // formData.append("comment", formValues.comment);
+      // let parts = formValues.deadline.split(" "); // Split the string by spaces
+      // let number = parseInt(parts[0]);
+      // formData.append("deadline", number);
+      // formData.append("pages", count);
+      // formData.append("amount", price);
+      // formData.append(
+      //   "orderFile",
+      //   document.querySelector('input[type="file"]').files[0]
+      // );
 
-      // console.log("Form Submitted", formData);
-      if (localStorage.getItem("token") === null) {
-        alert("Please login to continue");
-        return;
-      }
-      const response = await axios.post(
-        "https://contentlywriters.com:8088/order/add",
-        formData,
-        {
-          headers: {
-            Authorization: `${localStorage.getItem("token")}`,
-            "Content-Type": "multipart/form-data",
-          },
+      // // console.log("Form Submitted", formData);
+      // if (localStorage.getItem("token") === null) {
+      //   alert("Please login to continue");
+      //   return;
+      // }
+      // const response = await axios.post(
+      //   "https://contentlywriters.com:8088/order",
+      //   formData,
+      //   {
+      //     headers: {
+      //       Authorization: `${localStorage.getItem("token")}`,
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //   }
+      // );
+
+      // console.log(response);
+      var options = {
+        "key": "rzp_live_Akona2kaTAt7MG", // Enter the Key ID generated from the Dashboard
+        "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Facio Contently Writers Private Limited", //your business name
+        "description": "Test Transaction",
+        // "image": "https://example.com/your_logo",
+        "order_id": "order_OddAeVemSJ0rPH", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response){
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature)
+        },
+        "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+            "name": "Gaurav Kumar", //your customer's name
+            "email": "gaurav.kumar@example.com", 
+            "contact": "9000090000"  //Provide the customer's phone number for better conversion rates 
+        },
+        "notes": {
+            "address": "flat 420, aligarh,india"
+        },
+        "theme": {
+            "color": "#3399cc"
         }
-      );
-
-      console.log(response);
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+    });
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+    }
     } catch (err) {
       console.log(err);
     }
@@ -412,6 +461,7 @@ export default function Banner() {
               type="button"
               className="w-full h-12  bg-[#000] "
               onClick={handleSubmit}
+              id="rzp-button1"
             >
               Write my assignment
             </Button>

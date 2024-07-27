@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { AuthProvider } from "@/context/auth";
 import "./globals.css";
-
+import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,7 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>{children}
+          <Script src='https://checkout.razorpay.com/v1/checkout.js' />
+        </AuthProvider>
+        
       </body>
     </html>
   );
