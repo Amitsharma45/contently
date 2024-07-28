@@ -12,7 +12,8 @@ import { useUserContext } from "@/context/auth";
 import logo from "@/assets/image/contently-logo.png";
 import Image from "next/image";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { toast } from "react-toastify";
 export default function LoginScreen() {
   const { getProfile } = useUserContext();
   const router = useRouter();
@@ -77,6 +78,15 @@ export default function LoginScreen() {
         return;
       }
 
+      toast.success("Login Success!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       getProfile();
       router.replace("/");
       setLoading(false);
@@ -146,9 +156,9 @@ export default function LoginScreen() {
           </Link>
           <Button type="button" disabled={loading} onClick={handleSubmit}>
             {loading ? (
-              <AiOutlineLoading3Quarters className='h-4 w-4 animate-spin' />
+              <AiOutlineLoading3Quarters className="h-4 w-4 animate-spin" />
             ) : (
-              'Login'
+              "Login"
             )}
           </Button>
           <div className="text-center">

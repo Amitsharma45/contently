@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import { AuthProvider } from "@/context/auth";
 import "./globals.css";
 import Script from 'next/script';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,7 +18,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>{children}
           <Script src='https://checkout.razorpay.com/v1/checkout.js' />
         </AuthProvider>
-        
+        <ToastContainer />
       </body>
     </html>
   );

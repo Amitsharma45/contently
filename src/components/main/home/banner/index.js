@@ -24,6 +24,7 @@ import InputError from "@/components/ui/input-error";
 import { useRouter } from "next/navigation";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useUserContext } from "@/context/auth";
+import { toast } from "react-toastify";
 export default function Banner() {
   // const checkoutHandler = async({orderDetails}) => {
   //   const orderData  = await axios.post("https://contentlywriters.com:8088/order", {data: orderDetails})
@@ -269,47 +270,54 @@ export default function Banner() {
         }
       );
 
-      console.log({ response });
-      console.log("Form Values:");
       const { amount, paymentOrderId, currency } =
         response.data.data.paymentOrder;
-      console.log("-----265");
       var options = {
         key: "rzp_live_Akona2kaTAt7MG", // Enter the Key ID generated from the Dashboard
-        amount: +amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency: currency,
         name: "Facio Contently Writers Private Limited", //your business name
         description: "Test Transaction",
         // "image": "https://example.com/your_logo",
         order_id: paymentOrderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         handler: function (response) {
-          alert(response.razorpay_payment_id);
-          alert(response.razorpay_order_id);
-          alert(response.razorpay_signature);
+          // alert(response.razorpay_payment_id);
+          // alert(response.razorpay_order_id);
+          // alert(response.razorpay_signature);
+          toast.success("Order create Successful!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         },
         prefill: {
           //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
           name: user.firstName + user.lastName, //your customer's name
           email: user.email,
-          contact: "9000090000", //Provide the customer's phone number for better conversion rates
+          contact: "", //Provide the customer's phone number for better conversion rates
         },
         theme: {
           color: "#3399cc",
         },
       };
-      console.log("-----289", { options });
+  
       var rzp1 = await new Razorpay(options);
       rzp1.on("payment.failed", function (response) {
-        console.log("payment.failed", { response });
-        // alert(response.error.code);
-        // alert(response.error.description);
-        // alert(response.error.source);
-        // alert(response.error.step);
-        // alert(response.error.reason);
-        // alert(response.error.metadata.order_id);
-        // alert(response.error.metadata.payment_id);
+        toast.error("Payment failed!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
-      console.log("-----300");
+    
       // document.getElementById("rzp-button1").onclick = async function (e) {
       //   e.preventDefault();
       //   await rzp1.open();
@@ -331,15 +339,6 @@ export default function Banner() {
 
       if (orderData) {
         setTimeout(() => {
-          // const base64String = sessionStorage.getItem("file");
-
-          // if (base64String) {
-
-          //   console.log("File loaded from sessionStorage.", { base64String });
-          //   setFile(base64String);
-          //   // setSelectedFileName(file.name);
-          // }
-
           setFormValues({
             comment: orderData.comment,
             deadline: orderData.deadline,
@@ -460,9 +459,9 @@ export default function Banner() {
             <div className="relative w-full">
               <label
                 htmlFor="orderFile"
-                className="cursor-pointer inline-block"
+                className="cursor-pointer inline-block w-full"
               >
-                <Button>Choose file</Button>
+                <Button className='w-full' >Choose file</Button>
               </label>
               <Input
                 type="file"

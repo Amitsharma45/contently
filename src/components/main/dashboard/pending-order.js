@@ -31,13 +31,13 @@ export default function PendingOrder({ orders }) {
             <TableRow>
               <TableHead className="w-[100px]">Invoice</TableHead>
               <TableHead>Subject</TableHead>
-              <TableHead>Topic</TableHead>
-              <TableHead className="">Comment</TableHead>
-              <TableHead className="">Deadline</TableHead>
-              <TableHead className="">Pages</TableHead>
-              <TableHead className="">Amount</TableHead>
-              <TableHead className="">Order Date</TableHead>
-              <TableHead className="">Order File</TableHead>
+              <TableHead className="text-center">Topic</TableHead>
+              <TableHead className="text-center">Comment</TableHead>
+              <TableHead className="text-center">Deadline</TableHead>
+              <TableHead className="text-center">Pages</TableHead>
+              <TableHead className="text-center">Amount</TableHead>
+              <TableHead className="text-center">Order Date</TableHead>
+              <TableHead className="text-center">Order File</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -49,7 +49,7 @@ export default function PendingOrder({ orders }) {
               >
                 <TableCell className="font-medium">{order.orderId}</TableCell>
                 <TableCell>{order.subject}</TableCell>
-                <TableCell>{order.topic}</TableCell>
+                <TableCell className="text-center">{order.topic}</TableCell>
                 <TableCell className="text-center">{order.comment}</TableCell>
                 <TableCell className="text-center">{order.deadline}</TableCell>
                 <TableCell className="text-center">{order.pages}</TableCell>
