@@ -12,11 +12,12 @@ import { useUserContext } from "@/context/auth";
 import logo from "@/assets/image/contently-logo.png";
 import Image from "next/image";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 export default function LoginScreen() {
   const { getProfile } = useUserContext();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -50,6 +51,7 @@ export default function LoginScreen() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const error = {};
       if (!formValues.email) error.email = "Please enter email";
       if (!formValues.password) error.password = "Please enter password";
@@ -71,16 +73,19 @@ export default function LoginScreen() {
         const error = {};
         error.password = "Please check your password";
         setErrors(error);
+        setLoading(false);
         return;
       }
 
       getProfile();
       router.replace("/");
+      setLoading(false);
     } catch (err) {
       console.log(err);
       const error = {};
       error.email = "User does not exists";
       setErrors(error);
+      setLoading(false);
     }
   };
 
@@ -139,8 +144,12 @@ export default function LoginScreen() {
           <Link href="/sign-up" className="underline">
             Forgot Password
           </Link>
-          <Button type="button" onClick={handleSubmit}>
-            Login
+          <Button type="button" disabled={loading} onClick={handleSubmit}>
+            {loading ? (
+              <AiOutlineLoading3Quarters className='h-4 w-4 animate-spin' />
+            ) : (
+              'Login'
+            )}
           </Button>
           <div className="text-center">
             Don&#39;t have an account?{" "}
