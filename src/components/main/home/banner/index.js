@@ -22,6 +22,8 @@ import { TbMailStar } from "react-icons/tb";
 import axios from "axios";
 import InputError from "@/components/ui/input-error";
 import { useRouter } from "next/navigation";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useUserContext } from "@/context/auth";
 export default function Banner() {
   // const checkoutHandler = async({orderDetails}) => {
   //   const orderData  = await axios.post("https://contentlywriters.com:8088/order", {data: orderDetails})
@@ -29,12 +31,12 @@ export default function Banner() {
   // }
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
-
+  const { user } = useUserContext();
   const [formValues, setFormValues] = useState({
     subject: "Accounting",
     topic: "",
     paragraph: "",
-    comment: "hello bhai",
+    comment: "",
     deadline: "14 days",
     orderFile: "",
     temp: "Passage",
@@ -43,6 +45,7 @@ export default function Banner() {
 
   const [count, setCount] = useState(1);
   const [price, setPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -214,9 +217,11 @@ export default function Banner() {
   };
   const handleMakeOrder = async (data) => {
     try {
+      setLoading(true);
       const error = {};
       if (localStorage.getItem("token") === null) {
         alert("Please login to continue");
+        setLoading(false);
         return;
       }
       if (!formValues.topic) error.topic = "Please enter topic";
@@ -243,11 +248,6 @@ export default function Banner() {
         document.querySelector('input[type="file"]').files[0]
       );
 
-      // console.log("Form Submitted", formData);
-      if (localStorage.getItem("token") === null) {
-        alert("Please login to continue");
-        return;
-      }
       const response = await axios.post(
         "https://contentlywriters.com:8088/order",
         formData,
@@ -260,47 +260,58 @@ export default function Banner() {
       );
 
       console.log({ response });
-      //   var options = {
-      //     "key": "rzp_live_Akona2kaTAt7MG", // Enter the Key ID generated from the Dashboard
-      //     "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      //     "currency": "INR",
-      //     "name": "Facio Contently Writers Private Limited", //your business name
-      //     "description": "Test Transaction",
-      //     // "image": "https://example.com/your_logo",
-      //     "order_id": "order_OddAeVemSJ0rPH", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      //     "handler": function (response){
-      //         alert(response.razorpay_payment_id);
-      //         alert(response.razorpay_order_id);
-      //         alert(response.razorpay_signature)
-      //     },
-      //     "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-      //         "name": "Gaurav Kumar", //your customer's name
-      //         "email": "gaurav.kumar@example.com",
-      //         "contact": "9000090000"  //Provide the customer's phone number for better conversion rates
-      //     },
-      //     "notes": {
-      //         "address": "flat 420, aligarh,india"
-      //     },
-      //     "theme": {
-      //         "color": "#3399cc"
-      //     }
+      console.log("Form Values:");
+      const { amount, paymentOrderId, currency } =
+        response.data.data.paymentOrder;
+      console.log("-----265");
+      var options = {
+        key: "rzp_live_Akona2kaTAt7MG", // Enter the Key ID generated from the Dashboard
+        amount: +amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: currency,
+        name: "Facio Contently Writers Private Limited", //your business name
+        description: "Test Transaction",
+        // "image": "https://example.com/your_logo",
+        order_id: paymentOrderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        handler: function (response) {
+          alert(response.razorpay_payment_id);
+          alert(response.razorpay_order_id);
+          alert(response.razorpay_signature);
+        },
+        prefill: {
+          //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+          name: user.firstName + user.lastName, //your customer's name
+          email: user.email,
+          contact: "9000090000", //Provide the customer's phone number for better conversion rates
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      console.log("-----289", { options });
+      var rzp1 = await new Razorpay(options);
+      rzp1.on("payment.failed", function (response) {
+        console.log("payment.failed", { response });
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+      console.log("-----300");
+      // document.getElementById("rzp-button1").onclick = async function (e) {
+      //   e.preventDefault();
+      //   await rzp1.open();
+      //   console.log('306-------')
       // };
-      // var rzp1 = new Razorpay(options);
-      // rzp1.on('payment.failed', function (response){
-      //         alert(response.error.code);
-      //         alert(response.error.description);
-      //         alert(response.error.source);
-      //         alert(response.error.step);
-      //         alert(response.error.reason);
-      //         alert(response.error.metadata.order_id);
-      //         alert(response.error.metadata.payment_id);
-      // });
-      // document.getElementById('rzp-button1').onclick = function(e){
-      //     rzp1.open();
-      //     e.preventDefault();
-      // }
+
+      rzp1.open();
+
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   };
 
@@ -324,8 +335,10 @@ export default function Banner() {
             temp: orderData.temp,
             topic: orderData.topic,
           });
-          setCount(orderData.pages);
+
+          setCount(orderData.count);
           setPrice(orderData.amount);
+          updatePrice();
         }, 0);
         // Optionally, uncomment these if needed
       } else {
@@ -500,9 +513,14 @@ export default function Banner() {
               type="button"
               className="w-full h-12  bg-[#000] "
               onClick={handleSubmit}
+              // disabled={loading}
               id="rzp-button1"
             >
-              Write my assignment
+              {loading ? (
+                <AiOutlineLoading3Quarters className="h-4 w-4 animate-spin" />
+              ) : (
+                "Write my assignment"
+              )}
             </Button>
           </form>
         </div>
