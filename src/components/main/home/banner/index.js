@@ -45,6 +45,7 @@ export default function Banner() {
 
   const [count, setCount] = useState(1);
   const [price, setPrice] = useState(0);
+  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setIsClient(true);
@@ -207,7 +208,16 @@ export default function Banner() {
     };
     if (localStorage.getItem("token") === null) {
       sessionStorage.setItem("orderData", JSON.stringify(data));
-      // sessionStorage.setItem("data", JSON.stringify(data));
+      // sessionStorage.setItem("file", file);
+      // const reader = new FileReader();
+
+      // reader.onload = function (event) {
+      //   const base64String = event.target.result;
+      //   sessionStorage.setItem("file", base64String);
+      //   alert("File saved to sessionStorage.");
+      // };
+
+      // reader.readAsDataURL(file);
       sessionStorage.setItem("redirectURL", JSON.stringify("/"));
       router.push("/login");
       return;
@@ -231,7 +241,10 @@ export default function Banner() {
       if (!formValues.subject) error.subject = "Please enter subject";
       setError(error);
       console.log(error);
-      if (Object.keys(error).length > 0) return;
+      if (Object.keys(error).length > 0) {
+        setLoading(false);
+        return;
+      }
 
       let formData = new FormData();
       formData.append("subject", formValues.subject);
@@ -243,10 +256,7 @@ export default function Banner() {
       formData.append("deadline", number);
       formData.append("pages", count);
       formData.append("amount", price);
-      formData.append(
-        "orderFile",
-        document.querySelector('input[type="file"]').files[0]
-      );
+      formData.append("orderFile", file);
 
       const response = await axios.post(
         "https://contentlywriters.com:8088/order",
@@ -291,13 +301,13 @@ export default function Banner() {
       var rzp1 = await new Razorpay(options);
       rzp1.on("payment.failed", function (response) {
         console.log("payment.failed", { response });
-        alert(response.error.code);
-        alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
+        // alert(response.error.code);
+        // alert(response.error.description);
+        // alert(response.error.source);
+        // alert(response.error.step);
+        // alert(response.error.reason);
+        // alert(response.error.metadata.order_id);
+        // alert(response.error.metadata.payment_id);
       });
       console.log("-----300");
       // document.getElementById("rzp-button1").onclick = async function (e) {
@@ -318,23 +328,29 @@ export default function Banner() {
   useEffect(() => {
     try {
       const orderData = JSON.parse(sessionStorage.getItem("orderData"));
-      const redirectURL = JSON.parse(sessionStorage.getItem("redirectURL"));
-
-      console.log("orderData from sessionStorage:", orderData);
-      console.log("redirectURL from sessionStorage:", redirectURL);
 
       if (orderData) {
-        console.log("Setting form values with orderData:", orderData);
         setTimeout(() => {
+          // const base64String = sessionStorage.getItem("file");
+
+          // if (base64String) {
+
+          //   console.log("File loaded from sessionStorage.", { base64String });
+          //   setFile(base64String);
+          //   // setSelectedFileName(file.name);
+          // }
+
           setFormValues({
             comment: orderData.comment,
             deadline: orderData.deadline,
-            orderFile: orderData.orderFile,
+            orderFile: "",
             pages: orderData.pages,
             subject: orderData.subject,
             temp: orderData.temp,
             topic: orderData.topic,
           });
+          setFile(null);
+          setSelectedFileName("");
 
           setCount(orderData.count);
           setPrice(orderData.amount);
@@ -354,6 +370,8 @@ export default function Banner() {
   const handleFileChange = (event) => {
     if (event.target.files.length > 0) {
       setSelectedFileName(event.target.files[0].name);
+      console.log({ selectedFileName: event.target.files[0] });
+      setFile(event.target.files[0]);
     } else {
       setSelectedFileName("");
     }
@@ -513,7 +531,7 @@ export default function Banner() {
               type="button"
               className="w-full h-12  bg-[#000] "
               onClick={handleSubmit}
-              // disabled={loading}
+              disabled={loading}
               id="rzp-button1"
             >
               {loading ? (
