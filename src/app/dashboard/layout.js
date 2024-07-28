@@ -7,7 +7,7 @@ export default function DashBoardLayout({ children }) {
     <ProtectedRoute>
       <div>
         <NavbarDashBoard />
-        <div className="min-h-[400px]">{children}</div>
+        <div className="">{children}</div>
         <DashBoardFooter />
       </div>
     </ProtectedRoute>
