@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 export default function PendingOrder({ orders }) {
   return (
     <div className="">
@@ -50,15 +50,19 @@ export default function PendingOrder({ orders }) {
                 <TableCell className="font-medium">{order.orderId}</TableCell>
                 <TableCell>{order.subject}</TableCell>
                 <TableCell>{order.topic}</TableCell>
-                <TableCell className="">{order.comment}</TableCell>
-                <TableCell className="">{order.deadline}</TableCell>
-                <TableCell className="">{order.pages}</TableCell>
-                <TableCell className="">{order.amount}</TableCell>
-                <TableCell className="">
-                {format(order.orderPlacedTimestamp, 'dd-MM-yyyy')}
+                <TableCell className="text-center">{order.comment}</TableCell>
+                <TableCell className="text-center">{order.deadline}</TableCell>
+                <TableCell className="text-center">{order.pages}</TableCell>
+                <TableCell className="text-center">{order.amount}</TableCell>
+                <TableCell className="text-center">
+                  {format(order.orderPlacedTimestamp, "dd-MM-yyyy")}
                 </TableCell>
-                <TableCell className="">
-                  <Link href={order.orderFileLink || '#'} className="hover:underline">
+                <TableCell className="text-center">
+                  <Link
+                    href={order.orderFileLink || "#"}
+                    target="_black"
+                    className="hover:underline"
+                  >
                     File
                   </Link>
                 </TableCell>

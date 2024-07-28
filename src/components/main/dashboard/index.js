@@ -12,7 +12,6 @@ export default function DashBoard() {
   const [currentTab, setCurrentTab] = useState("Pending");
   const getOrders = async () => {
     try {
-      console.log("getOrders");
       const response = await axios.get(
         `https://contentlywriters.com:8088/order/getAll?status=${"Pending"}`,
         {
@@ -22,7 +21,11 @@ export default function DashBoard() {
         }
       );
       console.log({ response });
-      setOrders(response.data.data);
+      if (response.data.data) {
+        setOrders(response.data.data);
+      } else {
+        setOrders([]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +43,7 @@ export default function DashBoard() {
             <TabsTrigger value="cancelled">Cancelled</TabsTrigger>
           </TabsList>
           <TabsContent value="recent">
-            {/* <PendingOrder orders={orders} /> */}
+            <PendingOrder orders={orders} />
           </TabsContent>
           <TabsContent value="finished">
             <div className="grid justify-center items-center gap-2 py-4">
