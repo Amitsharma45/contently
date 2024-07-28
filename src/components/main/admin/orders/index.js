@@ -80,8 +80,8 @@ export default function AdminOrderScreen() {
           </TableRow>
         </TableHeader>
         <TableBody>
-        {orders.map((order) => (
-          <TableRow className="hover:bg-green-200" 
+        {orders.map((order,index) => (
+          <TableRow key={index} className="hover:bg-green-200" 
           onClick={() => handleIconClick(order)}
           >
             <TableCell className="font-medium">{order.orderId}</TableCell>
