@@ -167,7 +167,7 @@ export default function LoginScreen() {
               Register
             </Link>
           </div>
-          <Button type="button">
+          <Button type="button"  >
             <FcGoogle className="mr-5 text-2xl" />
             Login with Google
           </Button>

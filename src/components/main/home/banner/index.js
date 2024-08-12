@@ -196,9 +196,36 @@ export default function Banner() {
     setPrice(price);
   }
 
+  const getUpdatedPrice = async (e) => {
+    try {
+      const response = await axios.post(
+        "https://contentlywriters.com:8088/price",
+        {
+          subject: formValues.subject,
+          days: formValues.deadline.split(" ")[0],
+        },
+        {
+          headers: {
+            Authorization: `${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const { price } = response.data;
+      setPrice(price * count);
+    } catch (err) {
+      console.log({ err });
+    }
+  };
   useEffect(() => {
-    updatePrice();
-  }, [formValues, count]);
+    if (formValues.subject && count) {
+      getUpdatedPrice();
+    }
+  }, [formValues.subject, formValues.deadline,count]);
+
+  // useEffect(()=>{
+  //   setPrice((prev)=>prev*count);
+  // },[count])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -209,15 +236,6 @@ export default function Banner() {
     };
     if (localStorage.getItem("token") === null) {
       sessionStorage.setItem("orderData", JSON.stringify(data));
-      // sessionStorage.setItem("file", file);
-      // const reader = new FileReader();
-
-      // reader.onload = function (event) {
-      //   const base64String = event.target.result;
-      //   sessionStorage.setItem("file", base64String);
-      //   alert("File saved to sessionStorage.");
-      // };
-
       // reader.readAsDataURL(file);
       sessionStorage.setItem("redirectURL", JSON.stringify("/"));
       router.push("/login");
@@ -304,7 +322,7 @@ export default function Banner() {
           color: "#3399cc",
         },
       };
-  
+
       var rzp1 = await new Razorpay(options);
       rzp1.on("payment.failed", function (response) {
         toast.error("Payment failed!", {
@@ -317,7 +335,7 @@ export default function Banner() {
           progress: undefined,
         });
       });
-    
+
       // document.getElementById("rzp-button1").onclick = async function (e) {
       //   e.preventDefault();
       //   await rzp1.open();
@@ -353,7 +371,7 @@ export default function Banner() {
 
           setCount(orderData.count);
           setPrice(orderData.amount);
-          updatePrice();
+          getUpdatedPrice();
         }, 0);
         // Optionally, uncomment these if needed
       } else {
@@ -461,7 +479,7 @@ export default function Banner() {
                 htmlFor="orderFile"
                 className="cursor-pointer inline-block w-full"
               >
-                <Button className='w-full' >Choose file</Button>
+                <Button className="w-full">Choose file</Button>
               </label>
               <Input
                 type="file"
@@ -590,7 +608,7 @@ const subjectOptions = [
 ];
 
 const deadlineOptions = [
-  { name: "1 day", value: "136499" },
+  // { name: "1 day", value: "136499" },
   { name: "3 days", value: "136500" },
   { name: "7 days", value: "136501" },
   { name: "14 days", value: "136502" },
