@@ -18,12 +18,12 @@ export default function Blog() {
   return (
     <div className="px-4 sm:!px-10 lg:!px-[50px] ">
       <div className="max-w-[1280px] mx-auto">
-        <h1 className="text-center  text-5xl pt-10 font-semibold">
+        {/* <h1 className="text-center  text-5xl pt-10 font-semibold">
           Table of Content
-        </h1>
+        </h1> */}
 
         <div className="sm:px-20 grid sm:gap-20 gap-10 py-10">
-          <div className="flex gap-5 justify-center flex-wrap ">
+          {/* <div className="flex gap-5 justify-center flex-wrap ">
             <Button onClick={() => scrollToSection("1blog")}>
               A Beginner Guide
             </Button>
@@ -33,7 +33,7 @@ export default function Blog() {
             <Button onClick={() => scrollToSection("3blog")}>
               Power of ROI
             </Button>
-          </div>
+          </div> */}
           {data.map((item, index) => (
             <div
               key={index}

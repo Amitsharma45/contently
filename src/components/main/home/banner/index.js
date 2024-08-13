@@ -193,8 +193,11 @@ export default function Banner() {
     }
 
     price *= count;
-    setPrice(price);
+    setPrice(floorToTwo(price * count));
   }
+  function floorToTwo(num) {
+    return Math.floor(num * 100) / 100;
+}
 
   const getUpdatedPrice = async (e) => {
     try {
@@ -212,7 +215,7 @@ export default function Banner() {
         }
       );
       const { price } = response.data;
-      setPrice(price * count);
+      setPrice(floorToTwo(price * count));
     } catch (err) {
       console.log({ err });
     }
@@ -370,7 +373,8 @@ export default function Banner() {
           setSelectedFileName("");
 
           setCount(orderData.count);
-          setPrice(orderData.amount);
+        
+          setPrice(floorToTwo(orderData.amount));
           getUpdatedPrice();
         }, 0);
         // Optionally, uncomment these if needed
