@@ -99,6 +99,17 @@ export default function LoginScreen() {
     }
   };
 
+  const handleGoogleAuth = async () => {
+    try {
+      await axios.get(
+        "https://www.contentlywriters.com:8088/oauth2/authorization/google",
+        {
+          withCredentials: true, // This is the key part to include credentials like cookies
+        }
+      );
+    } catch (err) {}
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="border-2 rounded-lg sm:w-[400px]  p-8 ">
@@ -167,7 +178,7 @@ export default function LoginScreen() {
               Register
             </Link>
           </div>
-          <Button type="button"  >
+          <Button type="button" onClick={handleGoogleAuth}>
             <FcGoogle className="mr-5 text-2xl" />
             Login with Google
           </Button>

@@ -134,6 +134,17 @@ export default function SignUpScreen() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const handleGoogleAuth = async () => {
+    try {
+      await axios.get(
+        "https://www.contentlywriters.com:8088/oauth2/authorization/google",
+        {
+          withCredentials: true, // This is the key part to include credentials like cookies
+        }
+      );
+    } catch (err) {}
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="border-2 rounded-lg sm:w-[400px] p-8">
@@ -246,7 +257,7 @@ export default function SignUpScreen() {
               Login
             </Link>
           </div>
-          <Button type="button">
+          <Button type="button" onClick={handleGoogleAuth}>
             <FcGoogle className="mr-5 text-2xl" />
             Register with Google
           </Button>
